@@ -4,7 +4,7 @@ Sky360 Webapp
 Work in Progress. Once the basic setup is made, will make into a docker image. Contains false placeholder data for now. 
 
 1. Download to your desktop into a folder, name that folder whatever you want, and on command line cd into that folder. 
-2. Type in on command line "python3 manage.py runserver" (or whatever python command your version of python uses). Some use 'python' and some use 'py'.
+2. Type in on command line "python3 manage.py runserver" (or whatever python command your version of python uses). Some use 'python' and some use 'py'. The first time you do this, you may be prompted to create a username and password. Alternatively, the username might already be 'username' and the password might be 'password' or '123456789'.
 3. Open your web browser and go to the following links.
 
 
