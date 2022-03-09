@@ -21,7 +21,7 @@ http://localhost:8000/admin/
 set your own username and password on the command line
 
 TODOS:
-Add react redux(?) and corresponding node files
-Add Postgres database with Postgis add-on
-Add Redis store
+Add react redux(?) and corresponding node files,
+Add Postgres database with Postgis add-on,
+Add Redis store,
 Add Dockerbuild: to include the above and pylint, pytest, eslint, mocha/chai. No need for webpack/babel since we're using evergreen browser.
