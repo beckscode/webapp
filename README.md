@@ -1,10 +1,10 @@
 # webapp
 Sky360 Webapp
 
-Work in Progress.Contains false placeholder data. 
+Work in Progress. Contains false placeholder data. 
 
-1. Download to your desktop into a folder, name that folder whatever you want, and cd into that folder on command line. 
-2. Type in "python3 manage.py runserver" or whatever your version of python uses.
+1. Download to your desktop into a folder, name that folder whatever you want, and on command line cd into that folder. 
+2. Type in on command line "python3 manage.py runserver" (or whatever python command your version of python uses). Some use 'python' and some use 'py'.
 3. Open your web browser and go to the following links.
 
 
