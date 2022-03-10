@@ -1,6 +1,8 @@
 # webapp
 Sky360 Webapp
 
+Python section(python version 3.9.2)
+
 Work in Progress. Once the basic setup is made, will make into a docker image. Contains false placeholder data for now. 
 
 1. Download to your desktop into a folder, name that folder whatever you want, and on command line cd into that folder. 
@@ -19,6 +21,11 @@ Sample Admin Page:
 
 http://localhost:8000/admin/
 set your own username and password on the command line
+
+To run node site (node version v16.14.0):
+1. in command line in the front end folder type "npm install *"
+2. in command line type "npm start" from the frontend folder.
+3. in your web browser go to http://localhost:3000/
 
 TODOS:
 Add react redux(?) and corresponding node files,
