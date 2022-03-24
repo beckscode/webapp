@@ -28,16 +28,32 @@ To run node site (node version v16.14.0):
 2. in command line type "npm start" from the frontend folder.
 3. in your web browser go to http://localhost:3000/
 
+Neo4j Installation:
+django_neomodel ....problem with package, you may have to first install libgeos-dev "sudo apt-get install libgeos-dev" and then run "pip3 install django_neomodel"
+neomodel ....problem with package, you may have to install libgeos-dev "sudo apt-get install libgeos-dev" and then run "pip3 install neomodel"
+
+Postgres and Postgis Installation:
+to add PostGIS, you'll need to install additional programs in addition to libgeos-dev, "sudo apt-get install binutils libproj-dev gdal-bin"  This is required for raster support.  https://docs.djangoproject.com/en/4.0/ref/contrib/gis/install/geolibs/#geosbuild
+
+to run postgres, you'll need this on your computer:"sudo apt-get install postgresql postgresql-contrib"  and "sudo apt-get install libpq-dev python3-dev"
+then run "pip install psycopg2" in your virtual env where you have your specific django app
+to build postgres db https://djangocentral.com/using-postgresql-with-django/
+
+
+TODO 3/24/22: https://postgis.net/docs/postgis_installation.html#install_requirements
+ and build postgres db https://djangocentral.com/using-postgresql-with-django/
+
+
 Style Guide for Python: https://peps.python.org/pep-0008/
 Linting: pylint https://pylint.org/
 
 TODOS:
 -Add react redux(?) and corresponding node files,
 -Add Postgres database with Postgis add-on,
--Add Neo4j add-on, create sample database and models file. 
+-Add Neo4j sample database and models file. 
 https://neo4j.com/developer-blog/neo4j-for-django-developers/ 
 An Object Graph Mapper (OGM) for the Neo4j graph database, built on the awesome neo4j_driver: https://neomodel.readthedocs.io/en/latest/index.html    
 https://github.com/neo4j-contrib/django-neomodel
--Add django-pandas library. https://pypi.org/project/django-pandas/  and  https://towardsdatascience.com/django-pandas-and-chart-js-for-a-quick-dashboard-e261bce38bee
+-Review django pandas https://pypi.org/project/django-pandas/  and  https://towardsdatascience.com/django-pandas-and-chart-js-for-a-quick-dashboard-e261bce38bee
 -Add Redis store,
 -Add Dockerbuild: to include the above and pylint, pytest, eslint, mocha/chai. No need for webpack/babel since we're using evergreen browser.
