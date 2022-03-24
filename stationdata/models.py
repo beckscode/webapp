@@ -84,7 +84,7 @@ class Book(models.Model):
     genre = models.ManyToManyField(Genre, help_text="Select a genre for this book")
     # ManyToManyField used because a genre can contain many books and a Book can cover many genres.
     # Genre class has already been defined so we can specify the object above.
-    language = models.ForeignKey('Language', on_delete=models.SET_NULL, null=True)
+    #language = models.ForeignKey('Language', on_delete=models.SET_NULL, null=True)
     
     class Meta:
         ordering = ['title', 'author']

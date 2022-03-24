@@ -6,7 +6,7 @@ Python section(python version 3.9.2)
 Work in Progress. Once the basic setup is made, will make into a docker image. Contains false placeholder data for now. 
 
 1. Download to your desktop into a folder, name that folder whatever you want, and on command line cd into that folder. 
-2. Type in on command line "python3 manage.py runserver" (or whatever python command your version of python uses). Some use 'python' and some use 'py'. The first time you do this, you may be prompted to create a username and password. Alternatively, the username might already be 'username' and the password might be 'password' or '123456789'.
+2. Type in on command line "python3 manage.py runserver" (or whatever python command your version of python uses). Some use 'python' and some use 'py'. The first time you do this, you may be prompted to create a username and password from the command line. Alternatively, the username might already be 'username' and the password might be 'password' or '123456789'. If the password/username are already set, then go to localhost:8000/admin and type 'username' as the username and 'password' as the password.
 3. Open your web browser and go to the following links.
 
 
@@ -20,7 +20,8 @@ http://localhost:8000/stationdata/
 Sample Admin Page:
 
 http://localhost:8000/admin/
-set your own username and password on the command line
+username = "username", password = "password" until/unless you change it
+
 
 To run node site (node version v16.14.0):
 1. in command line in the front end folder type "npm install *"
@@ -37,6 +38,6 @@ TODOS:
 https://neo4j.com/developer-blog/neo4j-for-django-developers/ 
 An Object Graph Mapper (OGM) for the Neo4j graph database, built on the awesome neo4j_driver: https://neomodel.readthedocs.io/en/latest/index.html    
 https://github.com/neo4j-contrib/django-neomodel
-
+-Add django-pandas library. https://pypi.org/project/django-pandas/  and  https://towardsdatascience.com/django-pandas-and-chart-js-for-a-quick-dashboard-e261bce38bee
 -Add Redis store,
 -Add Dockerbuild: to include the above and pylint, pytest, eslint, mocha/chai. No need for webpack/babel since we're using evergreen browser.
