@@ -8,6 +8,22 @@
   <!-- Add additional CSS in static file -->
   {% load static %}
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+  <!-- Begin Weathermap css and scripts -->
+	<link rel="stylesheet" href="{% static 'weathermap/leaflet/leaflet.css' %}">
+	<link rel="stylesheet" href="{% static 'weathermap/leaflet/leaflet-openweathermap.css' %}">
+	<link rel="stylesheet" href="{% static 'weathermap/files/map.css' %}">
+	<script src="{% static 'weathermap/leaflet/leaflet.js' %}"></script>
+	<script src="{% static 'weathermap/leaflet/Permalink.js' %}"></script>
+	<script src="{% static 'weathermap/leaflet/Permalink.Layer.js' %}"></script>
+	<script src="{% static 'weathermap/leaflet/Permalink.Overlay.js' %}"></script>
+	<script src="{% static 'weathermap/leaflet/leaflet-openweathermap.js' %}"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'weathermap/leaflet/leaflet-languageselector.css' %}">
+	<script src="{% static 'weathermap/leaflet/leaflet-languageselector.js' %}"></script>
+	<script src="{% static 'weathermap/files/map_i18n.js' %}"></script>
+	<script src="{% static 'weathermap/files/map.js' %}"></script>
+  <!-- End Weathermap css and scripts -->
+
 </head>
 <body>
   <div class="container-fluid">
