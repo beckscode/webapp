@@ -28,3 +28,5 @@ urlpatterns += [
     path('stationdata/', include('stationdata.urls')),
     path('', RedirectView.as_view(url='stationdata/', permanent=True)),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+
