@@ -64,7 +64,7 @@ TODOS:
 
 -Add redux(?) and corresponding node files,
 
--Fix flag icons on weatherapp on index page,
+-Create map for ISS/satellites and flight aware
 
 -Build sample Postgres database with Postgis add-on,
 

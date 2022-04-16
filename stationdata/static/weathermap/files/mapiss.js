@@ -227,7 +227,7 @@ document.getElementById('wheeltxt').innerHTML = getI18n('scrollwheel', localLang
 /**
  * Initialize the map.
  */
-function initMap() {
+function initMapIss() {
 
 var standard = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 maxZoom: 19,
