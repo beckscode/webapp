@@ -11,7 +11,7 @@
   <h1>Practice Image</h1>
 	<img src={% static 'Sky360.png' %}
  <br>
-  <h1>Dynamic Content Information(such as number of saved video files)</h1>
+  <h1>Data Base Data(such as number of saved video files)</h1>
   <p>Sky360 has the following record counts:</p>
   <ul>
     <li><strong>Example Placeholder - UAP Videos:</strong> {{ num_books }}</li>
@@ -26,15 +26,15 @@
         <h3>Temp, Humidty, Pressure, Wind, Sunrise, Sunset[call api]</h3>
 	<div id="map" style="width:600px;height:400px;"></div>
 	<br><br><br>
-        <h1>Map with ISS and Satellites</h1>
+        <h1>ISS and Satellites</h1>
 	<div id="map2" style="width:600px;height:400px;"></div>
 	<br><br><br>
-        <h1>Map with Air Traffic</h1>
+        <h1>Air Traffic</h1>
 	<div id="map3" style="width:600px;height:400px;"></div>
 	<br><br><br>
 
 	<script>
-
+        //ISS and Satellites map
 	var map2 = L.map('map2').setView([51.505, -0.09], 13);
 
 	var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
@@ -47,6 +47,7 @@
 	}).addTo(map2);
 
 
+	//Flight Tracking map
 	var map3 = L.map('map3').setView([48.858190, 2.29470], 13);
 
 	var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
@@ -58,7 +59,7 @@
 		zoomOffset: -1
 	}).addTo(map3);
 
-		
+		//Weather map
 		initMap();
 		/* if (!confirm("Please note that this page is only a demonstration for an OpenWeatherMap leaflet plugin.\nIt is not intended for productive use.\n\nVisit https://github.com/buche/leaflet-openweathermap for more information.\n\nClick OK to proceed with the map or click Cancel to visit Github.")) {
 			window.location.href = "https://github.com/buche/leaflet-openweathermap";
