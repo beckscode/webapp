@@ -4,50 +4,85 @@
 
 {% load static %}
 
-  <h1>Sky360 Home - WORK IN PROGRESS</h1>
+    <h1>Sky360 Home - WORK IN PROGRESS</h1>
 
-  <p>Welcome to Sky360, introduction paragraph <em>videos, data, etc</em>!</p>
-<h2>Dynamic content</h2>
-  <p>Sky360 has the following record counts:</p>
- <ul>
-<li><strong>Example Placeholder - Books:</strong> {{ num_books }}</li>
-<li><strong>Example Placeholder - Copies:</strong> {{ num_instances }}</li>
-<li><strong>Example Placeholder - Copies available:</strong> {{ num_instances_available }}</li>
-<li><strong>Example Placeholder - Authors:</strong> {{ num_authors }}</li>
- </ul>
-  <h1>Image</h1>
-    <img src="{% static 'Sky360.png' %}" alt="My image">  
-  <h1>Preliminary Weather Map</h1>
+        <p>Welcome to Sky360, introduction paragraph <em>videos, data, etc</em>!</p>
+        <h2>Dynamic content</h2>
+        <p>Sky360 has the following record counts:</p>
+        <ul>
+            <li><strong>Example Placeholder - Books:</strong> {{ num_books }}</li>
+            <li><strong>Example Placeholder - Copies:</strong> {{ num_instances }}</li>
+            <li><strong>Example Placeholder - Copies available:</strong> {{ num_instances_available }}</li>
+            <li><strong>Example Placeholder - Authors:</strong> {{ num_authors }}</li>
+        </ul>
+    <h1>Image</h1>
+        <img src="{% static 'Sky360.png' %}" alt="My image">  
+    <h1>Preliminary Weather Map</h1>
 
-    <div>Temperature: <span id="temp"></span>°, Humidity:<span id="humid"></span>%, Wind:<span id="winds"></span>, Precipitation:<span id="main"></span>, Pressure:<span id="pressure"></span>, Sunrise:<span id="sunrise"></span>, Sunset:<span id="sunset"></span></div>
+<div>
+    Temperature: <span id="temp"></span>°, 
+    Humidity: <span id="humid"></span>%, 
+    Wind: <span id="winds"></span>, 
+    Precipitation: <span id="main"></span>, 
+    Pressure: <span id="pressure"></span>, 
+    Sunrise: <span id="sunrise"></span>, 
+    Sunset: <span id="sunset"></span>
+</div>
 
 <div id="map" style="width: 600px; height: 400px;"></div>
+    <br><br>
 
-<br><br>
-
-<h1>ISS and ( Satellites? / GPS?) - Location - Real Time</h1>
+    <h1>ISS and ( Satellites? / GPS?) - Location - Real Time</h1>
     <p>
- ISS Location<br />
-      latitude: <span id="lat"></span>°<br />
-      longitude: <span id="lon"></span>°
+        ISS Location<br />
+        latitude: <span id="lat"></span>°<br />
+        longitude: <span id="lon"></span>°
     </p>
+
 <div id="map2" style="width: 600px; height: 400px;"></div>
+    <br><br>
 
-<br><br>
+    <h1>Flight Aware and (Satellites? / GPS?) - Location - Real Time</h1>
 
-<h1>Flight Aware and (Satellites? / GPS?) - Location - Real Time</h1>
 <div id="map3" style="width: 600px; height: 400px;"></div>
-<br><br>
+    <br><br>
 
 <script>
-//ISS and Satellites
-var map2 = L.map('map2').setView([48.858190, 2.294470], 1);
+    // api_urlw update to users location and key(?)
+    const api_urlw = 'https://api.openweathermap.org/data/2.5/weather?lat=48.858190&lon=2.294470&appid=1d705b6f8471dfb1d07e10c9725aba3e';
 
-// add an OpenStreetMap tile layer
-L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map2);
+    async function getWeather() {
+        const responsew = await fetch(api_urlw);
+        //console.log(response);
+        const dataw = await responsew.json();
+        console.log(dataw);
+        console.log(dataw["weather"][0]["id"]);
+        console.log(dataw["weather"][0]["main"]);
+        console.log(dataw["main"]["temp"]);
+        console.log(dataw["main"]["humidity"]);
+        console.log(dataw["main"]["pressure"]);
+        // needs work :
+        //const { weather................ } = dataw;
+        document.getElementById('temp').textContent = dataw["weather"][0]["id"];
+        document.getElementById('temp').textContent = dataw["main"]["temp"];
+        document.getElementById('humid').textContent = dataw["main"]["humidity"];
+        document.getElementById('pressure').textContent = dataw["main"]["pressure"];
+        document.getElementById('winds').textContent = dataw["wind"]["speed"];
+        document.getElementById('main').textContent = dataw["weather"][0]["main"];
+        }
 
+    getWeather();
+    //needs work
+    //setInterval(getWeather, 1000);    
+    
+    
+    //ISS and Satellites
+    var map2 = L.map('map2').setView([48.858190, 2.294470], 1);
+
+    // add an OpenStreetMap tile layer
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map2);
 
 
     const issIcon = L.icon({
@@ -58,7 +93,8 @@ attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contri
     const marker = L.marker([0, 0], { icon: issIcon }).addTo(map2);
 
     const api_url = 'https://api.wheretheiss.at/v1/satellites/25544';
-let firstTime = true;
+
+    let firstTime = true;
 
     async function getISS() {
         const response = await fetch(api_url);
@@ -76,58 +112,30 @@ let firstTime = true;
 
     getISS();
     setInterval(getISS, 1000);
-
-    // api_urlw update to users location and key(?)
-const api_urlw = 'https://api.openweathermap.org/data/2.5/weather?lat=48.858190&lon=2.294470&appid=1d705b6f8471dfb1d07e10c9725aba3e';
-
-async function getWeather() {
-    const responsew = await fetch(api_urlw);
-//console.log(response);
-    const dataw = await responsew.json();
-console.log(dataw);
-console.log(dataw["weather"][0]["id"]);
-console.log(dataw["weather"][0]["main"]);
-console.log(dataw["main"]["temp"]);
-console.log(dataw["main"]["humidity"]);
-console.log(dataw["main"]["pressure"]);
-        // needs work :
-  //const { weather................ } = dataw;
-document.getElementById('temp').textContent = dataw["weather"][0]["id"];
-document.getElementById('temp').textContent = dataw["main"]["temp"];
-document.getElementById('humid').textContent = dataw["main"]["humidity"];
-document.getElementById('pressure').textContent = dataw["main"]["pressure"];
-document.getElementById('winds').textContent = dataw["wind"]["speed"];
-document.getElementById('main').textContent = dataw["weather"][0]["main"];
-    }
-
-getWeather();
      
-//needs work
-       
-        //document.getElementById('lon').textContent = longitude.toFixed(2);
+    //needs work
+    //document.getElementById('lon').textContent = longitude.toFixed(2);
 
 
+    //Flight Aware
+    var map3 = L.map('map3').setView([48.858190, 2.294470], 12);
 
+    // add an OpenStreetMap tile layer
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map3);
 
-//Flight Aware
-var map3 = L.map('map3').setView([48.858190, 2.294470], 12);
+    // add a marker in the given location, attach some popup content to it and open the popup
+    L.marker([48.858190, 2.294470]).addTo(map3)
+    .bindPopup('Your Sky360 Station.')
+    .openPopup();
 
-// add an OpenStreetMap tile layer
-L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map3);
+    //map 1 with language controls
+    initMap();
 
-// add a marker in the given location, attach some popup content to it and open the popup
-L.marker([48.858190, 2.294470]).addTo(map3)
-.bindPopup('Your Sky360 Station.')
-.openPopup();
-
-//map 1 with language controls
-initMap();
-
-//if (!confirm("Click OK to proceed with the map or click Cancel to visit Github.")) {
-// //window.location.href = "https://github.com/buche/leaflet-openweathermap";
-//}
+    //if (!confirm("Click OK to proceed with the map or click Cancel to visit Github.")) {
+    // //window.location.href = "https://github.com/buche/leaflet-openweathermap";
+    //}
 </script>
 
 {% endblock %}
