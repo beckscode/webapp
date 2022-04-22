@@ -42,39 +42,40 @@ https://docs.djangoproject.com/en/4.0/ref/contrib/gis/install/geolibs/#geosbuild
 
 To run postgres, you'll need this on your computer:"sudo apt-get install postgresql postgresql-contrib" and "sudo apt-get install libpq-dev python3-dev".
 
+Add postgis: "sudo apt-get install postgis" https://postgis.net/docs/postgis_installation.html#install_requirements
+
+To Create DB and add Postgis extension from command line "sudo -u postgres psql" then follow instructions on: https://djangocentral.com/using-postgresql-with-django/ and http://bostongis.com/?content_name=postgis_tut01
+
 Then run "pip install psycopg2" in your virtual env where you have your specific django app. 
 To build postgres db https://djangocentral.com/using-postgresql-with-django/
 
-
+To access postgres on command line: "sudo -u postgres psql"
 
 Style Guide for Python: https://peps.python.org/pep-0008/
 Linting: pylint https://pylint.org/
 
 
 
-TODO 3/24/22: 
-Finish PostGis Install (also needed to store map tiles for weather app)
-https://postgis.net/docs/postgis_installation.html#install_requirements
- and build postgres db https://djangocentral.com/using-postgresql-with-django/
+TODO 4/22/22: 
+Store map tiles for weather app in db, create db, create connection. https://djangocentral.com/using-postgresql-with-django/ and http://bostongis.com/?content_name=postgis_tut01
+
 
 
 
 TODOS:
--Add Camera feed and media player
+-Add Camera feed and media player.
 
--Add redux(?) and corresponding node files,
+-Add redux(?) and corresponding node files.
 
--Create map for ISS/satellites and flight aware
+-Add Satellites (with GPS) and flightaware. Add ISS.
 
--Build sample Postgres database with Postgis add-on,
+-Build sample Postgres database with Postgis add-on. Completed.
 
 -Add Neo4j sample database and models file. 
 https://neo4j.com/developer-blog/neo4j-for-django-developers/ 
 An Object Graph Mapper (OGM) for the Neo4j graph database, built on the awesome neo4j_driver: https://neomodel.readthedocs.io/en/latest/index.html    
 https://github.com/neo4j-contrib/django-neomodel.
 
--Review django pandas https://pypi.org/project/django-pandas/  and  https://towardsdatascience.com/django-pandas-and-chart-js-for-a-quick-dashboard-e261bce38bee
-
--Add Redis store,
+-Add Redis store.
 
 -Add Dockerbuild: to include the above and pylint, pytest, eslint, mocha/chai. No need for webpack/babel since we're using evergreen browser.

@@ -119,6 +119,17 @@ DATABASES = {
 #        },
 #    },
 #}
+# Another sample postgres db https://djangocentral.com/using-postgresql-with-django/
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#        'NAME': 'mydb',
+#        'USER': 'myuser',
+#        'PASSWORD': 'mypass',
+#        'HOST': 'localhost',
+#        'PORT': '',
+#    }
+#}
 
 
 # Password validation

@@ -7,7 +7,30 @@
     <h1>Sky360 Home - WORK IN PROGRESS</h1>
 
         <p>Welcome to Sky360, introduction paragraph <em>videos, data, etc</em>!</p>
-        <h2>Dynamic content</h2>
+	
+	  <video
+	    id="my-video"
+	    class="video-js"
+	    controls
+	    preload="auto"
+	    width="640"
+	    height="264"
+	    poster="MY_VIDEO_POSTER.jpg"
+	    data-setup="{}"
+	  >
+	    <source src="MY_VIDEO.mp4" type="video/mp4" />
+	    <source src="MY_VIDEO.webm" type="video/webm" />
+	    <p class="vjs-no-js">
+	      To view this video please enable JavaScript, and consider upgrading to a
+	      web browser that
+	      <a href="https://videojs.com/html5-video-support/" target="_blank"
+		>supports HTML5 video</a
+	      >
+	    </p>
+	  </video>
+		
+
+	<h2>Dynamic content</h2>
         <p>Sky360 has the following record counts:</p>
         <ul>
             <li><strong>Example Placeholder - Books:</strong> {{ num_books }}</li>
@@ -63,7 +86,7 @@
         console.log(dataw["main"]["pressure"]);
         // needs work :
         //const { weather................ } = dataw;
-        document.getElementById('temp').textContent = dataw["weather"][0]["id"];
+        //document.getElementById('temp').textContent = dataw["weather"][0]["id"];
         document.getElementById('temp').textContent = dataw["main"]["temp"];
         document.getElementById('humid').textContent = dataw["main"]["humidity"];
         document.getElementById('pressure').textContent = dataw["main"]["pressure"];
@@ -137,5 +160,7 @@
     // //window.location.href = "https://github.com/buche/leaflet-openweathermap";
     //}
 </script>
+
+<script src="https://vjs.zencdn.net/7.18.1/video.min.js"></script>
 
 {% endblock %}
