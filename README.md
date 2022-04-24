@@ -63,6 +63,10 @@ Store map tiles for weather app in db, create db, create connection. https://dja
 
 
 TODOS:
+-Put environment variables in seperate file. 
+
+-Db on portable drive.
+
 -Add Camera feed and media player.
 
 -Add redux(?) and corresponding node files.
