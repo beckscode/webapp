@@ -43,13 +43,13 @@
     <h1>Preliminary Weather Map</h1>
 
 <div>
-    Temperature: <span id="temp"></span>°, 
-    Humidity: <span id="humid"></span>%, 
-    Wind: <span id="winds"></span>, 
-    Precipitation: <span id="main"></span>, 
-    Pressure: <span id="pressure"></span>, 
-    Sunrise: <span id="sunrise"></span>, 
-    Sunset: <span id="sunset"></span>
+Temperature: <span id="temp"></span>&nbsp °C,
+Humidity: <span id="humid"></span>%,
+Wind: <span id="winds"></span>&nbsp m/s,
+Precipitation: <span id="rain"></span> mm,
+Pressure: <span id="pressure"></span>&nbsp hPa, <br>
+Sunrise: <span id="sunrise"></span>, <br>
+Sunset: <span id="sunset"></span>
 </div>
 
 <div id="map" style="width: 600px; height: 400px;"></div>
@@ -74,25 +74,35 @@
     // api_urlw update to users location and key(?)
     const api_urlw = 'https://api.openweathermap.org/data/2.5/weather?lat=48.858190&lon=2.294470&appid=1d705b6f8471dfb1d07e10c9725aba3e';
 
-    async function getWeather() {
-        const responsew = await fetch(api_urlw);
-        //console.log(response);
-        const dataw = await responsew.json();
-        console.log(dataw);
-        console.log(dataw["weather"][0]["id"]);
-        console.log(dataw["weather"][0]["main"]);
-        console.log(dataw["main"]["temp"]);
-        console.log(dataw["main"]["humidity"]);
-        console.log(dataw["main"]["pressure"]);
-        // needs work :
-        //const { weather................ } = dataw;
-        //document.getElementById('temp').textContent = dataw["weather"][0]["id"];
-        document.getElementById('temp').textContent = dataw["main"]["temp"];
-        document.getElementById('humid').textContent = dataw["main"]["humidity"];
-        document.getElementById('pressure').textContent = dataw["main"]["pressure"];
-        document.getElementById('winds').textContent = dataw["wind"]["speed"];
-        document.getElementById('main').textContent = dataw["weather"][0]["main"];
-        }
+	async function getWeather() {
+		const responsew = await fetch(api_urlw);
+		//console.log(response);
+		const dataw = await responsew.json();
+		console.log(dataw);
+		console.log(dataw["weather"][0]["id"]);
+		console.log(dataw["weather"][0]["main"]);
+		console.log(dataw["main"]["temp"]);
+		console.log(dataw["main"]["humidity"]);
+		console.log(dataw["main"]["pressure"]);
+		var sunriseDate = new Date(dataw["sys"]["sunrise"]*1000);
+		var sunsetDate = new Date(dataw["sys"]["sunset"]*1000);
+		console.log(sunriseDate);
+		console.log(sunsetDate);
+		// needs work :
+		//const { weather................ } = dataw;
+		//document.getElementById('temp').textContent = dataw["weather"][0]["id"];
+		document.getElementById('temp').textContent = Math.round(dataw["main"]["temp"]-273.15);
+		document.getElementById('humid').textContent = dataw["main"]["humidity"];
+		document.getElementById('pressure').textContent = dataw["main"]["pressure"];
+		document.getElementById('winds').textContent = dataw["wind"]["speed"];
+		document.getElementById('sunrise').textContent = sunriseDate;
+		document.getElementById('sunset').textContent = sunsetDate;
+		try {
+		document.getElementById('rain').textContent = dataw["rain"]["1h"];
+		} catch {
+		document.getElementById('rain').textContent = 0;
+		};
+	}
 
     getWeather();
     //gets data from: https://api.openweathermap.org/data/2.5/weather?lat=48.858190&lon=2.294470&appid=1d705b6f8471dfb1d07e10c9725aba3e
