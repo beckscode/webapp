@@ -4,9 +4,9 @@
 
 {% load static %}
 
-    <h1>Sky360 Home - WORK IN PROGRESS</h1>
+    <h1>Home - WORK IN PROGRESS</h1>
 
-        <p>Welcome to Sky360, introduction paragraph <em>videos, data, etc</em>!</p>
+        <p>Welcome! Introduction paragraph <em>videos, data, etc</em>!</p>
 	
 	  <video
 	    id="my-video"
@@ -15,7 +15,7 @@
 	    preload="auto"
 	    width="640"
 	    height="264"
-	    poster="{% static 'Sky360.png' %}"
+	    poster="{% static 'blue-butterfly.jpeg' %}"
 	    data-setup="{}"
 	  >
 	    <source src="MY_VIDEO.mp4" type="video/mp4" />
@@ -30,8 +30,8 @@
 	  </video>
 		
 
-	<h2>Dynamic content</h2>
-        <p>Sky360 has the following record counts:</p>
+	<h2>Database Content</h2>
+        <p>Here are the following record counts:</p>
         <ul>
             <li><strong>Example Placeholder - Books:</strong> {{ num_books }}</li>
             <li><strong>Example Placeholder - Copies:</strong> {{ num_instances }}</li>
@@ -39,7 +39,7 @@
             <li><strong>Example Placeholder - Authors:</strong> {{ num_authors }}</li>
         </ul>
     <h1>Image</h1>
-        <img src="{% static 'Sky360.png' %}" alt="My image">  
+        <img src="{% static 'blue-butterfly.jpeg' %}" alt="My image">  
     <h1>Preliminary Weather Map</h1>
 
 <div>
@@ -72,7 +72,7 @@ Sunset: <span id="sunset"></span>
 
 <script>
     // api_urlw update to users location and key(?)
-    const api_urlw = 'https://api.openweathermap.org/data/2.5/weather?lat=48.858190&lon=2.294470&appid=1d705b6f8471dfb1d07e10c9725aba3e';
+    const api_urlw = 'https://api.openweathermap.org/data/2.5/weather?lat=26.111944&lon=-97.169724&appid=1d705b6f8471dfb1d07e10c9725aba3e';
 
 	async function getWeather() {
 		const responsew = await fetch(api_urlw);
@@ -86,10 +86,7 @@ Sunset: <span id="sunset"></span>
 		console.log(dataw["main"]["pressure"]);
 		var sunriseDate = new Date(dataw["sys"]["sunrise"]*1000);
 		var sunsetDate = new Date(dataw["sys"]["sunset"]*1000);
-		console.log(sunriseDate);
-		console.log(sunsetDate);
-		// needs work :
-		//const { weather................ } = dataw;
+
 		//document.getElementById('temp').textContent = dataw["weather"][0]["id"];
 		document.getElementById('temp').textContent = Math.round(dataw["main"]["temp"]-273.15);
 		document.getElementById('humid').textContent = dataw["main"]["humidity"];
@@ -105,14 +102,14 @@ Sunset: <span id="sunset"></span>
 	}
 
     getWeather();
-    //gets data from: https://api.openweathermap.org/data/2.5/weather?lat=48.858190&lon=2.294470&appid=1d705b6f8471dfb1d07e10c9725aba3e
+    //gets data from: https://api.openweathermap.org/data/2.5/weather?lat=26.111944&lon=-97.169724&appid=1d705b6f8471dfb1d07e10c9725aba3e
 
     //needs work. create function to set timer to one hour. 
     //setInterval(getWeather, 1000);    
     
     
     //ISS 
-    var map2 = L.map('map2').setView([48.858190, 2.294470], 3);
+    var map2 = L.map('map2').setView([26.111944, -97.169724], 3);
 
     // add an OpenStreetMap tile layer
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
@@ -153,7 +150,7 @@ Sunset: <span id="sunset"></span>
 
 
     //Flight Aware
-    var map3 = L.map('map3').setView([48.858190, 2.294470], 12);
+    var map3 = L.map('map3').setView([26.111944, -97.169724], 12);
 
     // add an OpenStreetMap tile layer
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
@@ -161,11 +158,12 @@ Sunset: <span id="sunset"></span>
     }).addTo(map3);
 
     // add a marker in the given location, attach some popup content to it and open the popup
-    L.marker([48.858190, 2.294470]).addTo(map3)
-    .bindPopup('Your Sky360 Station.')
+    L.marker([26.111944, -97.169724]).addTo(map3)
+    .bindPopup('Your Station.')
     .openPopup();
 
-    //map 1 with language controls
+    //map 1 with language controls. 
+    //lat long is hard coded in the original API code. Fix so it updates with gps.
     initMap();
 
     //if (!confirm("Click OK to proceed with the map or click Cancel to visit Github.")) {

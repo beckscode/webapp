@@ -1,5 +1,5 @@
 """
-WSGI config for sky360gui project.
+WSGI config for skygui project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

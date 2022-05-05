@@ -245,7 +245,7 @@ maxZoom: 19, attribution: 'Tiles © Esri — Source: Esri, i-cubed, USDA, USGS, 
 
 // Get your own free OWM API key at https://www.openweathermap.org/appid - please do not re-use mine!
 // You don't need an API key for this to work at the moment, but this will change eventually.
-var OWM_API_KEY = '06aac0fd4ba239a20d824ef89602f311';
+var OWM_API_KEY = '1d705b6f8471dfb1d07e10c9725aba3e';
 
 var clouds = L.OWM.clouds({opacity: 0.8, legendImagePath: 'files/NT2.png', appId: OWM_API_KEY});
 var cloudscls = L.OWM.cloudsClassic({opacity: 0.5, appId: OWM_API_KEY});
@@ -270,8 +270,11 @@ windrose.on('owmlayeradd', windroseAdded, windrose); // Add an event listener to
 
 var useGeolocation = true;
 var zoom = 6;
-var lat = 51.58;
-var lon = 10.1;
+//lat long is hard coded in the original API code. Fix so it updates with gps.
+var lat = 26.111944;
+var lon = -97.169724;
+//var lat = 51.58;
+//var lon = 10.1;
 var urlParams = getUrlParameters();
 if (typeof urlParams.zoom != "undefined" && typeof urlParams.lat != "undefined" && typeof urlParams.lon != "undefined") {
 zoom = urlParams.zoom;
