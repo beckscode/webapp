@@ -4,11 +4,11 @@
   {% block title %}<title>Station Data</title>{% endblock %}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
   <!-- Add additional CSS in static file -->
   {% load static %}
   
-
+<link rel="stylesheet" href="{% static 'bootstrap-5.1.3-dist/css/bootstrap.min.css' %}">
   <!-- Begin Weathermap css and scripts -->
 <link rel="stylesheet" href="{% static 'weathermap/leaflet/leaflet.css' %}">
 <link rel="stylesheet" href="{% static 'weathermap/leaflet/leaflet-openweathermap.css' %}">
@@ -29,8 +29,38 @@
 </head>
 <body>
   <div class="container-fluid">
+  
     <div class="row">
-      <div class="col-sm-2">
+      <div class="col-1">
+      Live<br>
+	  Optical
+      </div>
+      <div class="col-1">
+      Events<br>
+	  Radio
+      </div>
+      <div class="col-2">
+			<ul>
+				<li style="list-style-type:none;"><strong>Last Event Id:</strong> {{ num_books }}</li>
+				<li style="list-style-type:none;"><strong>Date:</strong> {{ num_instances }}</li>
+
+			</ul>
+      </div>
+      <div class="col-4">
+      <img src="{% static 'sky360logo.jpg' %}" alt="Sky360 Logo"><br>
+	  USA-12
+      </div>	   
+      <div class="col-4">
+      VARIOUS ICONS
+      </div>
+    </div>
+	
+    <div class="row">
+      {% block content %}{% endblock %}
+    </div>
+	
+	<div class = "row">
+	  <div class="col-sm-12">
       {% block sidebar %}
         <ul class="sidebar-nav">
           <li><a href="{% url 'index' %}">Home</a></li>
@@ -39,8 +69,7 @@
         </ul>
      {% endblock %}
       </div>
-      <div class="col-sm-10">{% block content %}{% endblock %}</div>
-    </div>
+	</div>
   </div>
 <script src="{% static '7.18.1/video.min.js' %}"></script></body>
 </html>

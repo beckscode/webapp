@@ -4,18 +4,17 @@
 
 {% load static %}
 
-    <h1>Home - WORK IN PROGRESS</h1>
-
-        <p>Welcome! Introduction paragraph <em>videos, data, etc</em>!</p>
+<div class="col-sm-5">
+    <h1>Sky360 Station Data</h1>
 	
 	  <video
 	    id="my-video"
 	    class="video-js"
 	    controls
 	    preload="auto"
-	    width="640"
-	    height="264"
-	    poster="{% static 'blue-butterfly.jpeg' %}"
+	    width="500"
+	    height="500"
+	    poster="{% static 'Sky360.png' %}"
 	    data-setup="{}"
 	  >
 	    <source src="MY_VIDEO.mp4" type="video/mp4" />
@@ -28,9 +27,38 @@
 	      >
 	    </p>
 	  </video>
-		
+	 </div>
+	 <div class="col-sm-1">
+	 	<h2>Sample </h2>
+		Date: 2022-4-28<br>
+		Time: 18:12:22 UTC
+        <ul>
+            <li style="list-style-type:none;"><strong>Accuracy:</strong> {{ num_books }} %</li>
 
-	<h2>Database Content</h2>
+        </ul>
+	 </div>
+     <div class="col-sm-6">
+	    <h1>Toggle between ISS, Wit-motion, Flight, Weather, Satellites, Constellations</h1>
+		<h1>ISS - Location - Real Time</h1>
+			<p>
+				ISS Location<br />
+				latitude: <span id="lat"></span>°<br />
+				longitude: <span id="lon"></span>°
+			</p>
+
+			<div id="map2" style="width: 600px; height: 400px;"></div>
+				<br><br>
+
+			 
+     <!--   <h1>Image</h1>
+        <img src="{% static 'blue-butterfly.jpeg' %}" alt="My image">  
+	 -->
+	</div>	
+		
+				
+		
+		
+	<h2>Database Content - Sample Placeholder</h2>
         <p>Here are the following record counts:</p>
         <ul>
             <li><strong>Example Placeholder - Books:</strong> {{ num_books }}</li>
@@ -38,8 +66,8 @@
             <li><strong>Example Placeholder - Copies available:</strong> {{ num_instances_available }}</li>
             <li><strong>Example Placeholder - Authors:</strong> {{ num_authors }}</li>
         </ul>
-    <h1>Image</h1>
-        <img src="{% static 'blue-butterfly.jpeg' %}" alt="My image">  
+		
+		
     <h1>Preliminary Weather Map</h1>
 
 <div>
@@ -55,18 +83,8 @@ Sunset: <span id="sunset"></span>
 <div id="map" style="width: 600px; height: 400px;"></div>
     <br><br>
 
-    <h1>ISS - Location - Real Time</h1>
-    <p>
-        ISS Location<br />
-        latitude: <span id="lat"></span>°<br />
-        longitude: <span id="lon"></span>°
-    </p>
-
-<div id="map2" style="width: 600px; height: 400px;"></div>
-    <br><br>
 
     <h1>Flight Aware and Satellites / GPS - Location - Real Time</h1>
-
 <div id="map3" style="width: 600px; height: 400px;"></div>
     <br><br>
 
@@ -143,7 +161,7 @@ Sunset: <span id="sunset"></span>
     }
 
     getISS();
-    setInterval(getISS, 10000);
+    setInterval(getISS, 5000);
      
     //needs work
     //document.getElementById('lon').textContent = longitude.toFixed(2);
@@ -172,5 +190,6 @@ Sunset: <span id="sunset"></span>
 </script>
 
 <script src="{% static '7.18.1/video/video.min.js' %}"></script>
+<script src="{% static 'bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js' %}"></script>
 
 {% endblock %}
