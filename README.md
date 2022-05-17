@@ -1,11 +1,11 @@
-# webapp
+ webapp
 Sky Tracking Webapp
 
 Python section(python version 3.9.2)
 
 Work in Progress. Once the basic setup is made, will make into a docker image. Contains false placeholder data for now and an sqlite db. 
 
-1. Download to your desktop into a folder, name that folder whatever you want, and on command line cd into that folder. Create a virtual env for that folder. https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/development_environment#using_django_inside_a_python_virtual_environment 
+1. Download code to your desktop into a folder. Name that folder whatever you want. On command line cd into that folder. Create a virtual env for that folder. https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/development_environment#using_django_inside_a_python_virtual_environment 
 2. Run "pip install -r requirements.txt" in command line to install pip libraries. If "neo4j-driver==4.4.1" fails, you might need to install "neo4j-driver==4.3.6" instead by adding it to the requirements.txt file or by running pip install.
 3. Type in on command line "python3 manage.py runserver" (or whatever python command your version of python uses). Some use 'python' and some use 'py'. The first time you do this, you may be prompted to create a username and password from the command line. Alternatively, the username might already be 'username' and the password might be 'password' or '123456789'. If the password/username are already set, then go to localhost:8000/admin and type 'username' as the username and 'password' as the password.
 4. Open your web browser and go to the following links.
@@ -57,17 +57,23 @@ Linting: pylint https://pylint.org/
 
 
 TODO 4/22/22: 
-Store map tiles for weather app in db, create db, create connection. https://djangocentral.com/using-postgresql-with-django/ and http://bostongis.com/?content_name=postgis_tut01
+Store map tiles for weather app in db, create db, create connection. create correct path of db in portable drive/flash drive. https://djangocentral.com/using-postgresql-with-django/ and http://bostongis.com/?content_name=postgis_tut01
 
 
 
 
-TODOS:
+TODOS 5-16-22:
+-Time to lint files!
+
+-Clean up bootstrap divs, remove duplicate library links, make copy of library and store it.
+
+-Create page within page for various graphs/map views.
+
 -Put environment variables in seperate file. 
 
 -Db on portable drive.
 
--Add Camera feed and media player.
+-Add Camera feed and media player. Make media player draggable so north faces up. Add 10% playback speed. Change speed options to % rather than decimals. See if timer on player can include seconds.
 
 -Add redux(?) and corresponding node files.
 
