@@ -7,31 +7,7 @@
 <div class="col-sm-5">
     <h1>Sky360 Station Data</h1>
 	
-<!--
-  <button onclick="playPause();">Play/Pause</button>  
-  <button onclick="restart();">Restart</button>
-  <button onclick="skip(-10);">Rewind</button>
-  <button onclick="skip(10);">Fastforward</button>
 
-  <video
-    id="video1"
-    class="video-js"
-    controls
-    preload="auto"
-    width="640"
-    height="264"
-    data-setup="{}"
-  >
-    <source src="comet-vid.MP4" type="video/mp4" />
-    <p class="vjs-no-js">
-      To view this video please enable JavaScript, and consider upgrading to a
-      web browser that
-      <a href="https://videojs.com/html5-video-support/" target="_blank"
-        >supports HTML5 video</a
-      >
-    </p>
-  </video>
-  -->
  
 <body>
 <div style="text-align:center">
@@ -45,12 +21,13 @@
   <button onclick="skip(10);">Fastforward</button>
  
   <br><br>
-  <video controls Id="video1" width="420">
-    <source src="comet-vid.mp4" type="video/mp4">
+  <video controls Id="video1" width="300">
+    <source src="{% static 'comet-vid.mp4' %}" type="video/mp4">
     Your browser does not support HTML5 video.
   </video>
 
 	 </div>
+	 
 	 <div class="col-sm-1">
 	 	<h2>Sample </h2>
 		Date: 2022-4-28<br>
@@ -60,7 +37,7 @@
 
         </ul>
 	 </div>
-     <div class="col-sm-6">
+     <div class="col-sm-4">
 	    <h1>Toggle between ISS, Wit-motion, Flight, Weather, Satellites, Constellations</h1>
 		<h1>ISS - Location - Real Time</h1>
 			<p>
@@ -69,18 +46,16 @@
 				longitude: <span id="lon"></span>°
 			</p>
 
-			<div id="map2" style="width: 600px; height: 400px;"></div>
+			<div id="map2" style="width: 260px; height: 400px;"></div>
 				<br><br>
 
 			 
-     <!--   <h1>Image</h1>
-        <img src="{% static 'blue-butterfly.jpeg' %}" alt="My image">  
-	 -->
+
 	</div>	
-		
+	</div>	
 				
 		
-		
+	<div>
 	<h2>Database Content - Sample Placeholder</h2>
         <p>Here are the following record counts:</p>
         <ul>
@@ -110,6 +85,8 @@ Sunset: <span id="sunset"></span>
     <h1>Flight Aware and Satellites / GPS - Location - Real Time</h1>
 <div id="map3" style="width: 600px; height: 400px;"></div>
     <br><br>
+    
+</div>
 
 <script>
     // api_urlw update to users location and key(?)
