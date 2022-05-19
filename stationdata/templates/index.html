@@ -4,88 +4,114 @@
 
 {% load static %}
 
-<div class="col-sm-5">
-    <h1>Sky360 Station Data</h1>
-	
-
- 
-<body>
-<div style="text-align:center">
-  <button onclick="playPause();">Play/Pause</button>  
-  <button onclick="restart();">Restart</button>
-  <button onclick="skip(-10);">Rewind</button>
-  <button onclick="skip(-1);">1 Sec Rewind</button>
-    <button onclick="skip(-1/30);">1/30s FPS Rewind</button>
-   <button onclick="skip(1/30);">1/30s FPS Fastfoward</button>
-   <button onclick="skip(1);">1 Sec Fastfoward</button>
-  <button onclick="skip(10);">Fastforward</button>
- 
-  <br><br>
-  <video controls Id="video1" width="300">
-    <source src="{% static 'comet-vid.mp4' %}" type="video/mp4">
-    Your browser does not support HTML5 video.
-  </video>
-
-	 </div>
-	 
-	 <div class="col-sm-1">
-	 	<h2>Sample </h2>
-		Date: 2022-4-28<br>
-		Time: 18:12:22 UTC
-        <ul>
-            <li style="list-style-type:none;"><strong>Accuracy:</strong> {{ num_books }} %</li>
-
-        </ul>
-	 </div>
-     <div class="col-sm-4">
-	    <h1>Toggle between ISS, Wit-motion, Flight, Weather, Satellites, Constellations</h1>
+<div class="row">
+	<div class="col-sm-6">
+		<div style="text-align:center">
+		  <br><br>
+		  <video controls Id="video1" width="600" >
+			<source src="{% static 'comet-vid.mp4' %}" type="video/mp4">
+			<!-- sample with urL <source src="//vjs.zencdn.net/v/oceans.mp4" type="video/mp4"> -->
+			Your browser does not support HTML5 video.
+		  </video>
+		  <br>
+		<button onclick="restart();">Restart</button>
+		<button onclick="skip(-10);">10 Sec Rewind</button>
+		<button onclick="skip(-1);">1 Sec Rewind</button>
+		<button onclick="playPause();">Play/Pause</button> 
+		<button onclick="skip(1);">1 Sec Fastfoward</button>
+		<button onclick="skip(10);">10 Sec Fastforward</button>			
+		<button onclick="skip(-1/20);">1/20s Rewind</button>
+		<button onclick="skip(1/20);">1/20s Fastfoward</button>
+		  <br>
+		<p>1/20 sec represents a 'frame'.</p>			  
+		</div>
+	</div>
+	<div class="col-sm-2">
+		<strong>Date:</strong> 2022-4-28<br>
+		<strong>Time:</strong> 18:12:22 UTC
+		<strong>Accuracy:</strong> {{ num_books }} %
+	</div>
+	<div class="col-sm-4">
+		<h1>Toggle between ISS, Wit-motion, Flight, Weather, Satellites, Constellations</h1>
 		<h1>ISS - Location - Real Time</h1>
-			<p>
-				ISS Location<br />
-				latitude: <span id="lat"></span>°<br />
-				longitude: <span id="lon"></span>°
-			</p>
+		<p>
+			ISS Location<br />
+			latitude: <span id="lat"></span>°<br />
+			longitude: <span id="lon"></span>°
+		</p>
 
-			<div id="map2" style="width: 260px; height: 400px;"></div>
-				<br><br>
+		<div id="map2" style="width: 400px; height: 280px;"></div>
+			<br><br>
+			
 
+		<div style="text-align:center">
 			 
-
+			<br><br>
+			<video controls Id="video1" width="400">
+				<source src="{% static 'comet-vid.mp4' %}" type="video/mp4">
+				Your browser does not support HTML5 video.
+			</video><br>
+			<button onclick="restart();">Restart</button>
+			<button onclick="skip(-10);">10 Sec Rewind</button>
+			<button onclick="skip(-1);">1 Sec Rewind</button>
+			<button onclick="playPause();">Play/Pause</button> 
+			<button onclick="skip(1);">1 Sec Fastfoward</button>
+			<button onclick="skip(10);">10 Sec Fastforward</button>			
+			<button onclick="skip(-1/20);">1/20s Rewind</button>
+			<button onclick="skip(1/20);">1/20s Fastfoward</button>
+			<br>
+			<p>1/20 sec represents a 'frame'.</p>
+		</div>
+		</div>	
 	</div>	
-	</div>	
+</div>
 				
+<div class="row">
+	<div class="col-sm-3"></div>
+	<div class="col-sm-6">
+		<h2>Database Content - Sample Placeholder</h2>
+			<p>Here are the following record counts:</p>
+			<ul>
+				<li><strong>Example Placeholder - Books:</strong> {{ num_books }}</li>
+				<li><strong>Example Placeholder - Copies:</strong> {{ num_instances }}</li>
+				<li><strong>Example Placeholder - Copies available:</strong> {{ num_instances_available }}</li>
+				<li><strong>Example Placeholder - Authors:</strong> {{ num_authors }}</li>
+			</ul>
+	</div>
+	<div class="col-sm-3"></div>
+</div>
 		
-	<div>
-	<h2>Database Content - Sample Placeholder</h2>
-        <p>Here are the following record counts:</p>
-        <ul>
-            <li><strong>Example Placeholder - Books:</strong> {{ num_books }}</li>
-            <li><strong>Example Placeholder - Copies:</strong> {{ num_instances }}</li>
-            <li><strong>Example Placeholder - Copies available:</strong> {{ num_instances_available }}</li>
-            <li><strong>Example Placeholder - Authors:</strong> {{ num_authors }}</li>
-        </ul>
-		
-		
-    <h1>Preliminary Weather Map</h1>
+<div class="row">
+	<div class="col-sm-3"></div>
+	<div class="col-sm-7">
+		<h1>Preliminary Weather Map</h1>
+		<div>
+		Temperature: <span id="temp"></span>&nbsp °C,
+		Humidity: <span id="humid"></span>%,
+		Wind: <span id="winds"></span>&nbsp m/s,
+		Precipitation: <span id="rain"></span> mm,
+		Pressure: <span id="pressure"></span>&nbsp hPa, <br>
+		Sunrise: <span id="sunrise"></span>, <br>
+		Sunset: <span id="sunset"></span>
+		</div>
 
-<div>
-Temperature: <span id="temp"></span>&nbsp °C,
-Humidity: <span id="humid"></span>%,
-Wind: <span id="winds"></span>&nbsp m/s,
-Precipitation: <span id="rain"></span> mm,
-Pressure: <span id="pressure"></span>&nbsp hPa, <br>
-Sunrise: <span id="sunrise"></span>, <br>
-Sunset: <span id="sunset"></span>
+		<div id="map" style="width: 600px; height: 400px;"></div>
+			<br><br>
+	</div>
+	<div class="col-sm-2"></div>
 </div>
 
-<div id="map" style="width: 600px; height: 400px;"></div>
-    <br><br>
 
+<div class="row">
+	<div class="col-sm-3"></div>
+	<div class="col-sm-6">
+		<h1>Flight Aware and Satellites / GPS - Location - Real Time</h1>
+		<div id="map3" style="width: 600px; height: 400px;"></div>
+		<br><br>
+ 	</div>
+	<div class="col-sm-3"></div>
+</div>   
 
-    <h1>Flight Aware and Satellites / GPS - Location - Real Time</h1>
-<div id="map3" style="width: 600px; height: 400px;"></div>
-    <br><br>
-    
 </div>
 
 <script>
@@ -122,8 +148,8 @@ Sunset: <span id="sunset"></span>
     getWeather();
     //gets data from: https://api.openweathermap.org/data/2.5/weather?lat=26.111944&lon=-97.169724&appid=1d705b6f8471dfb1d07e10c9725aba3e
 
-    //needs work. create function to set timer to one hour. 
-    //setInterval(getWeather, 1000);    
+    //needs work. create function to set timer to one hour, use chron jobs not js.
+    //setInterval(getWeather, 1000); 
     
     
     //ISS 
@@ -189,30 +215,32 @@ Sunset: <span id="sunset"></span>
     //}
 </script>
 
-<!-- <script src="{% static '7.18.1/video/video.min.js' %}"></script> -->
+
 <script src="{% static 'bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static '7.18.1/video/video.min.js' %}"></script>
 
-<script src="https://vjs.zencdn.net/7.18.1/video.min.js"></script>
-  <script>
-var myVideo = document.getElementById("video1");
+<script>
+// video controls
+	var myVideo = document.getElementById("video1");
 
-function playPause() {
-if (myVideo.paused)
-myVideo.play();
-else
-myVideo.pause();
-}
+	function playPause() {
+		if (myVideo.paused)
+			myVideo.play();
+		else
+			myVideo.pause();
+	}
 
-function skip(value) {
-var video = document.getElementById("video1");
-video.currentTime += value;
-myVideo.pause();
-}    
+	function skip(value) {
+	var video = document.getElementById("video1");
+	video.currentTime += value;
+	myVideo.pause();
+	}    
 
-function restart() {
-var video = document.getElementById("video1");
-video.currentTime = 0;
+	function restart() {
+	var video = document.getElementById("video1");
+	video.currentTime = 0;
     }
+		
 </script>
 
 {% endblock %}

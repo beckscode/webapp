@@ -63,9 +63,9 @@ Store map tiles for weather app in db, create db, create connection. create corr
 
 
 TODOS 5-16-22:
--Time to lint files!
+-Time to lint js files!
 
--Clean up bootstrap divs, remove duplicate library links, make copy of library and store it.
+-Add 1/10th time, etc.
 
 -Create page within page for various graphs/map views.
 

@@ -24,8 +24,7 @@
 <script src="{% static 'weathermap/files/map.js' %}"></script>
   <!-- End Weathermap css and scripts -->
   <!-- Video Player css -->
-<!-- <link rel="stylesheet" type="text/css" href="{% static '7.18.1/video-js.css' %}">  -->
- <link href="https://vjs.zencdn.net/7.18.1/video-js.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="{% static '7.18.1/video-js.css' %}"> 
 
 </head>
 <body>
@@ -60,6 +59,8 @@
       {% block content %}{% endblock %}
     </div>
 	
+	
+	<!-- get rid of code below? -->
 	<div class = "row">
 	  <div class="col-sm-12">
       {% block sidebar %}
@@ -68,9 +69,9 @@
           <li><a href="">Example - All books</a></li>
           <li><a href="">Example - All authors</a></li>
         </ul>
-     {% endblock %}
+      {% endblock %}
       </div>
 	</div>
   </div>
-<script src="{% static '7.18.1/video.min.js' %}"></script></body>
+</body>
 </html>
