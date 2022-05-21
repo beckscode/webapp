@@ -31,15 +31,22 @@
 body {
 font-size:16px;
 font-weight:bold;
-color:#000;
+color:#646464;
 background-color:#282828;
 padding:25px;
 }
 
-button{
+.btn{
 background-color:#646464;
 color:#282828;
 font-weight:bold;
+padding:5px;
+width:100px;
+}
+
+.green {
+color: #006400;
+}
 </style>
 
 
@@ -48,26 +55,23 @@ font-weight:bold;
   <div class="container-fluid">
   
     <div class="row">
-      <div class="col-1">
-      Live<br>
-	  Optical
-      </div>
-      <div class="col-1">
-      Events<br>
-	  Radio
+      <div class="col-2">
+      <a class="btn btn-primary" href="#" role="button">Live</a><br>
+	  <a class="btn btn-primary" href="#" role="button">Optical</a>
       </div>
       <div class="col-2">
-			<ul>
-				<li style="list-style-type:none;"><strong>Last Event Id:</strong> {{ num_books }}</li>
-				<li style="list-style-type:none;"><strong>Date:</strong> {{ num_instances }}</li>
-
-			</ul>
+      <a class="btn btn-primary" href="#" role="button">Events</a><br>
+	  <a class="btn btn-primary" href="#" role="button">Radio</a>
       </div>
-      <div class="col-4">
+      <div class="col-3">
+        <strong>Last Event Id:</strong><strong class="green"> {{ num_books }}</strong><br>
+        <strong class="green">Date:{{ num_instances }}</strong>
+      </div>
+      <div class="col-3">
       <img src="{% static 'sky360logo.jpg' %}" alt="Sky360 Logo"><br>
 	  USA-12
       </div>	   
-      <div class="col-4">
+      <div class="col-2">
       VARIOUS ICONS
       </div>
     </div>
