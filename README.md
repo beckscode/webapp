@@ -65,11 +65,15 @@ Store map tiles for weather app in db, create db, create connection. create corr
 TODOS 5-16-22:
 -Time to lint js files!
 
--Add 1/10th time, etc.
+-Continue CSS/bootstrap work. Need image files for icons. What's the font-style we're using?
 
--Create page within page for various graphs/map views.
+-Add 1/30th time, etc. Completed, but add 1/60th time?
+
+-Create page within page for various graphs/map views. Wit-motion using highcharts possibly? https://www.highcharts.com/demo/line-ajax
 
 -Put environment variables in seperate file. 
+
+-Add feature on admin page for users to add keys from various APIs. Users may be responsible for getting their own API keys where applicable. Openstreetmaps DOES NOT WANT THIS. 
 
 -Db on portable drive.
 
@@ -78,6 +82,8 @@ TODOS 5-16-22:
 -Add redux(?) and corresponding node files.
 
 -Add Satellites (with GPS) and flightaware. Add ISS.
+
+-Add hourly update for weather map via a python backend chron job?
 
 -Build sample Postgres database with Postgis add-on. Completed.
 
@@ -89,3 +95,5 @@ https://github.com/neo4j-contrib/django-neomodel.
 -Add Redis store.
 
 -Add Dockerbuild: to include the above and pylint, pytest, eslint, mocha/chai. No need for webpack/babel since we're using evergreen browser.
+
+-If you go this far, just for kicks: http://www.catb.org/~esr/faqs/hacker-howto.html

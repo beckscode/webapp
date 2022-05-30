@@ -20,10 +20,10 @@
 		<button onclick="playPause();">Play/Pause</button> 
 		<button onclick="skip(1);">1 Sec Fastfoward</button>
 		<button onclick="skip(10);">10 Sec Fastforward</button>			
-		<button onclick="skip(-1/20);">1/20s Rewind</button>
-		<button onclick="skip(1/20);">1/20s Fastfoward</button>
+		<button onclick="skip(-1/30);">1/30s Rewind</button>
+		<button onclick="skip(1/30);">1/30s Fastfoward</button>
 		  <br>
-		<p>1/20 sec represents a 'frame'.</p>			  
+		<p>1/30 sec represents a 'frame'.</p>			  
 		</div>
 	</div>
 	<div class="col-sm-2">
@@ -45,22 +45,22 @@
 			
 
 		<div style="text-align:center">
-			 
+			<!-- relable buttons/video and corresponding js code to prevent conflict with other video -->
 			<br><br>
-			<video controls Id="video1" width="100%">
+			<video controls Id="video1ptz" width="100%">
 				<source src="{% static 'comet-vid.mp4' %}" type="video/mp4">
 				Your browser does not support HTML5 video.
 			</video><br>
-			<button onclick="restart();">Restart</button>
-			<button onclick="skip(-10);">10 Sec Rewind</button>
-			<button onclick="skip(-1);">1 Sec Rewind</button>
-			<button onclick="playPause();">Play/Pause</button> 
-			<button onclick="skip(1);">1 Sec Fastfoward</button>
-			<button onclick="skip(10);">10 Sec Fastforward</button>			
-			<button onclick="skip(-1/20);">1/20s Rewind</button>
-			<button onclick="skip(1/20);">1/20s Fastfoward</button>
+			<button onclick="restartptz();">Restart</button>
+			<button onclick="skipptz(-10);">10 Sec Rewind</button>
+			<button onclick="skipptz(-1);">1 Sec Rewind</button>
+			<button onclick="playPauseptz();">Play/Pause</button> 
+			<button onclick="skipptz(1);">1 Sec Fastfoward</button>
+			<button onclick="skipptz(10);">10 Sec Fastforward</button>			
+			<button onclick="skipptz(-1/30);">1/30s Rewind</button>
+			<button onclick="skipptz(1/30);">1/30s Fastfoward</button>
 			<br>
-			<p>1/20 sec represents a 'frame'.</p>
+			<p>1/30 sec represents a 'frame'.</p>
 		</div>
 		</div>	
 	</div>	
@@ -239,7 +239,30 @@
 	function restart() {
 	var video = document.getElementById("video1");
 	video.currentTime = 0;
+	myVideo.play();
     }
+
+	var myVideoptz = document.getElementById("video1ptz");
+
+	function playPauseptz() {
+		if (myVideoptz.paused)
+			myVideoptz.play();
+		else
+			myVideoptz.pause();
+	}
+
+	function skipptz(value) {
+	var videoptz = document.getElementById("video1ptz");
+	videoptz.currentTime += value;
+	myVideoptz.pause();
+	}    
+
+	function restartptz() {
+	var videoptz = document.getElementById("video1ptz");
+	videoptz.currentTime = 0;
+	myVideoptz.play();
+    }
+
 		
 </script>
 
