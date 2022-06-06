@@ -7,66 +7,67 @@
 <div class="row">
 <div class="col-sm-6">
 <div style="text-align:center">
- <br><br>
- <video controls Id="video1" width="100%" >
-<source src="{% static 'comet-vid.mp4' %}" type="video/mp4">
-<!-- sample with urL <source src="//vjs.zencdn.net/v/oceans.mp4" type="video/mp4"> -->
-Your browser does not support HTML5 video. Use Chrome.
- </video>
- <br>
-<button class="btn" onclick="restart();">Restart</button>
-<button class="btn" onclick="skip(-10);">REW 10s</button>
-<button class="btn" onclick="skip(-1);">REW 1s</button>
-<button class="btn" onclick="playPause();">Play/Pause</button>
-<button class="btn" onclick="skip(1);">FFW 1s</button>
-<button class="btn" onclick="skip(10);">FFW 10s</button>
-<button class="btn" onclick="skip(-1/30);">REW 1/30s</button>
-<button class="btn" onclick="skip(1/30);">FFW 1/30s</button>
- <br>
-<p>1/30 sec represents a 'frame'.</p>  
+     <br><br>
+     <video controls Id="video1" width="100%" >
+	 <source src="{% static 'comet-vid.mp4' %}" type="video/mp4">
+	 <!-- sample with urL <source src="//vjs.zencdn.net/v/oceans.mp4" type="video/mp4"> -->
+	 Your browser does not support HTML5 video. Use Chrome.
+     </video>
+     <br>
+	 <button class="btn" onclick="restart();">Restart</button>
+	 <button class="btn" onclick="skip(-10);">REW 10s</button>
+	 <button class="btn" onclick="skip(-1);">REW 1s</button>
+	 <button class="btn" onclick="playPause();">Play/Pause</button>
+	 <button class="btn" onclick="skip(1);">FFW 1s</button>
+	 <button class="btn" onclick="skip(10);">FFW 10s</button>
+	 <button class="btn" onclick="skip(-1/30);">REW 1/30s</button>
+	 <button class="btn" onclick="skip(1/30);">FFW 1/30s</button>
+     <br>
+	<p>1/30 sec represents a 'frame'.</p>  
 </div>
 </div>
+
 <div class="col-sm-2">
-<strong>USA-12</strong><br>
-<strong>Date:</strong> <strong class="green">2022-4-28</strong><br>
-<strong>Time:</strong> <strong class="green">18:12:22 UTC</strong><br>
-<strong>Accuracy:</strong> <strong class="green">{{ num_books }} %</strong>
-<br><br>
-<strong>Station T:</strong> <strong class="green">29.4 &#730; C</strong><br>
-<strong>Ambient T:</strong> <strong class="green">28.7 &#730; C</strong><br>
-<strong>Station H:</strong> <strong class="green">55.3 %</strong><br>
+    <strong>USA-12</strong><br>
+    <strong>Date:</strong> <strong class="green">2022-4-28</strong><br>
+    <strong>Time:</strong> <strong class="green">18:12:22 UTC</strong><br>
+    <strong>Accuracy:</strong> <strong class="green">{{ num_books }} %</strong>
+    <br><br>
+    <strong>Station T:</strong> <strong class="green">29.4 &#730; C</strong><br>
+    <strong>Ambient T:</strong> <strong class="green">28.7 &#730; C</strong><br>
+    <strong>Station H:</strong> <strong class="green">55.3 %</strong><br>
 </div>
 <div class="col-sm-4">
-<h3>Toggle between ISS, Wit-motion, Flight, Weather, Satellites, Constellations</h3>
-<h3>ISS - Location - Real Time</h3>
-<p>
-ISS Location<br />
-latitude: <span id="lat"></span>°<br />
-longitude: <span id="lon"></span>°
-</p>
+    <h3>Toggle between ISS, Wit-motion, Flight, Weather, Satellites, Constellations</h3>
+    <h3>ISS - Location - Real Time</h3>
+        <p>
+        ISS Location<br />
+        latitude: <span id="lat"></span>°<br />
+        longitude: <span id="lon"></span>°
+        </p>
 
 <div id="map2" style="width: 400px; height: 280px;"></div>
 <br><br>
 
 
 <div style="text-align:center">
-<!-- relable buttons/video and corresponding js code to prevent conflict with other video -->
-<br><br>
-<h3>PTZ View</h3>
-<video controls Id="videoptz" width="100%">
-<source src="{% static 'comet-vid.mp4' %}" type="video/mp4">
-Your browser does not support HTML5 video. Use Chrome.
-</video><br>
-<button class="btn" onclick="restartPtz();">Restart</button>
-<button class="btn" onclick="skipPtz(-10);">REW 10s</button>
-<button class="btn" onclick="skipPtz(-1);">REW 1s</button>
-<button class="btn" onclick="playPausePtz();">Play/Pause</button>
-<button class="btn" onclick="skipPtz(1);">FFW 1s</button>
-<button class="btn" onclick="skipPtz(10);">FFW 10s</button>
-<button class="btn" onclick="skipPtz(-1/30);">REW 1/30s</button>
-<button class="btn" onclick="skipPtz(1/30);">FFW 1/30s</button>
-<br>
-<p>1/30 sec represents a 'frame'.</p>
+    <!-- relable buttons/video and corresponding js code to prevent conflict with other video -->
+    <br><br>
+        <h3>PTZ View</h3>
+        <video controls Id="videoptz" width="100%">
+        <source src="{% static 'comet-vid.mp4' %}" type="video/mp4">
+        Your browser does not support HTML5 video. Use Chrome.
+        </video><br>
+        <button class="btn" onclick="restartPtz();">Restart</button>
+        <button class="btn" onclick="skipPtz(-10);">REW 10s</button>
+        <button class="btn" onclick="skipPtz(-1);">REW 1s</button>
+        <button class="btn" onclick="playPausePtz();">Play/Pause</button>
+        <button class="btn" onclick="skipPtz(1);">FFW 1s</button>
+        <button class="btn" onclick="skipPtz(10);">FFW 10s</button>
+        <button class="btn" onclick="skipPtz(-1/30);">REW 1/30s</button>
+        <button class="btn" onclick="skipPtz(1/30);">FFW 1/30s</button>
+    <br>
+    <p>1/30 sec represents a 'frame'.</p>
 </div>
 </div>
 </div>
@@ -74,35 +75,38 @@ Your browser does not support HTML5 video. Use Chrome.
 <div class="row">
 <div class="col-sm-3"></div>
 <div class="col-sm-6"><br><br><br>
-<h3>Witmotion Data - Simulated<br>
-4 graphs<br>One single json file with TIME, acc, rotational speed 1-2-3, mag field, roll, pitch, yaw.<br>
-1: Acceleration m/s^2 <br>
-2: Rotational Speed (3 readings) deg/s<br>
-3. Magnetic Field - 1 reading<br>
-4. Roll, Pitch, Yaw in deg
-</h3>
-<br><br><br>
-<figure class="highcharts-figure">
-<div id="container-wm-acceleration"></div>
-<p class="highcharts-description">
-Datasets formatted in CSV or JSON can be fetched remotely using the
-<code>data</code> module. This chart shows how a chart can also be
-configured to poll against the remote source.
-</p>
-<div id="container-wm-magnetic-field"></div>
-</figure>
+    <h3>Witmotion Data - Simulated</h3>
+    <br>
+    4 graphs<br>One single json file with TIME, acc, rotational speed 1-2-3, mag field, roll, pitch, yaw.
+    <br>
+    1: Acceleration m/s^2 <br>
+    2: Rotational Speed (3 readings) deg/s<br>
+    3: Magnetic Field - 1 reading<br>
+    4: Roll, Pitch, Yaw in deg
+    </h3>
+    <br><br><br>
+    <figure class="highcharts-figure">
+        <div id="container-wm-acceleration"></div>
+            <p class="highcharts-description">
+            Datasets formatted in CSV or JSON can be fetched remotely using the
+            <code>data</code> module. This chart shows how a chart can also be
+            configured to poll against the remote source.
+            </p>
+            
+        <div id="container-wm-magnetic-field"></div>
+    </figure>
 
 <div class="ld-row">
-<input type="hidden" checked="checked" id="enablePolling"/>
-<input type="hidden" checked="checked" id="enablePollingMF"/>
+    <input type="hidden" checked="checked" id="enablePolling"/>
+    <input type="hidden" checked="checked" id="enablePollingMF"/>
 </div>
 <div class="ld-row">
-<input class="ld-time-input" type="hidden" value="2" id="pollingTime"/>
-<input class="ld-time-input" type="hidden" value="2" id="pollingTimeMF"/>
+    <input class="ld-time-input" type="hidden" value="2" id="pollingTime"/>
+    <input class="ld-time-input" type="hidden" value="2" id="pollingTimeMF"/>
 </div>
 <div class="ld-row">
-<input class="ld-url-input" type="hidden" id="fetchURL"/>
-<input class="ld-url-input" type="hidden" id="fetchURLMF"/>
+    <input class="ld-url-input" type="hidden" id="fetchURL"/>
+    <input class="ld-url-input" type="hidden" id="fetchURLMF"/>
 </div>
 <br><br><br>
 </div>
@@ -263,43 +267,43 @@ document.getElementById('rain').textContent = 0;
 var myVideo = document.getElementById("video1");
 
 function playPause() {
-if (myVideo.paused)
-myVideo.play();
-else
-myVideo.pause();
-}
+    if (myVideo.paused)
+        myVideo.play();
+    else
+        myVideo.pause();
+    }
 
 function skip(value) {
-var video = document.getElementById("video1");
-video.currentTime += value;
-myVideo.pause();
-}    
+    var video = document.getElementById("video1");
+    video.currentTime += value;
+    myVideo.pause();
+    }    
 
 function restart() {
-var video = document.getElementById("video1");
-video.currentTime = 0;
-myVideo.play();
+    var video = document.getElementById("video1");
+    video.currentTime = 0;
+    myVideo.play();
     }
 
 var myVideoPtz = document.getElementById("videoptz");
 
 function playPausePtz() {
-if (myVideoPtz.paused)
-myVideoPtz.play();
-else
-myVideoPtz.pause();
-}
+    if (myVideoPtz.paused)
+        myVideoPtz.play();
+    else
+        myVideoPtz.pause();
+    }
 
 function skipPtz(value) {
-var videoPtz = document.getElementById("videoptz");
-videoPtz.currentTime += value;
-myVideoPtz.pause();
-}    
+    var videoPtz = document.getElementById("videoptz");
+    videoPtz.currentTime += value;
+    myVideoPtz.pause();
+    }    
 
 function restartPtz() {
-var videoPtz = document.getElementById("videoptz");
-videoPtz.currentTime = 0;
-myVideoPtz.play();
+    var videoPtz = document.getElementById("videoptz");
+    videoPtz.currentTime = 0;
+    myVideoPtz.play();
     }
 
 
