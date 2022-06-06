@@ -53,18 +53,18 @@ longitude: <span id="lon"></span>°
 <!-- relable buttons/video and corresponding js code to prevent conflict with other video -->
 <br><br>
 <h3>PTZ View</h3>
-<video controls Id="video1ptz" width="100%">
+<video controls Id="videoptz" width="100%">
 <source src="{% static 'comet-vid.mp4' %}" type="video/mp4">
 Your browser does not support HTML5 video. Use Chrome.
 </video><br>
-<button class="btn" onclick="restart();">Restart</button>
-<button class="btn" onclick="skip(-10);">REW 10s</button>
-<button class="btn" onclick="skip(-1);">REW 1s</button>
-<button class="btn" onclick="playPause();">Play/Pause</button>
-<button class="btn" onclick="skip(1);">FFW 1s</button>
-<button class="btn" onclick="skip(10);">FFW 10s</button>
-<button class="btn" onclick="skip(-1/30);">REW 1/30s</button>
-<button class="btn" onclick="skip(1/30);">FFW 1/30s</button>
+<button class="btn" onclick="restartPtz();">Restart</button>
+<button class="btn" onclick="skipPtz(-10);">REW 10s</button>
+<button class="btn" onclick="skipPtz(-1);">REW 1s</button>
+<button class="btn" onclick="playPausePtz();">Play/Pause</button>
+<button class="btn" onclick="skipPtz(1);">FFW 1s</button>
+<button class="btn" onclick="skipPtz(10);">FFW 10s</button>
+<button class="btn" onclick="skipPtz(-1/30);">REW 1/30s</button>
+<button class="btn" onclick="skipPtz(1/30);">FFW 1/30s</button>
 <br>
 <p>1/30 sec represents a 'frame'.</p>
 </div>
@@ -281,25 +281,25 @@ video.currentTime = 0;
 myVideo.play();
     }
 
-var myVideoptz = document.getElementById("video1ptz");
+var myVideoPtz = document.getElementById("videoptz");
 
-function playPauseptz() {
-if (myVideoptz.paused)
-myVideoptz.play();
+function playPausePtz() {
+if (myVideoPtz.paused)
+myVideoPtz.play();
 else
-myVideoptz.pause();
+myVideoPtz.pause();
 }
 
-function skipptz(value) {
-var videoptz = document.getElementById("video1ptz");
-videoptz.currentTime += value;
-myVideoptz.pause();
+function skipPtz(value) {
+var videoPtz = document.getElementById("videoptz");
+videoPtz.currentTime += value;
+myVideoPtz.pause();
 }    
 
-function restartptz() {
-var videoptz = document.getElementById("video1ptz");
-videoptz.currentTime = 0;
-myVideoptz.play();
+function restartPtz() {
+var videoPtz = document.getElementById("videoptz");
+videoPtz.currentTime = 0;
+myVideoPtz.play();
     }
 
 
