@@ -5,158 +5,158 @@
 {% load static %}
 
 <div class="row">
-<div class="col-sm-6">
-<div style="text-align:center">
-     <br><br>
-     <video controls Id="video1" width="100%" >
-	 <source src="{% static 'comet-vid.mp4' %}" type="video/mp4">
-	 <!-- sample with urL <source src="//vjs.zencdn.net/v/oceans.mp4" type="video/mp4"> -->
-	 Your browser does not support HTML5 video. Use Chrome.
-     </video>
-     <br>
-	 <button class="btn" onclick="restart();">Restart</button>
-	 <button class="btn" onclick="skip(-10);">REW 10s</button>
-	 <button class="btn" onclick="skip(-1);">REW 1s</button>
-	 <button class="btn" onclick="playPause();">Play/Pause</button>
-	 <button class="btn" onclick="skip(1);">FFW 1s</button>
-	 <button class="btn" onclick="skip(10);">FFW 10s</button>
-	 <button class="btn" onclick="skip(-1/30);">REW 1/30s</button>
-	 <button class="btn" onclick="skip(1/30);">FFW 1/30s</button>
-     <br>
-	<p>1/30 sec represents a 'frame'.</p>  
-</div>
-</div>
+	<div class="col-sm-6">
+	<div style="text-align:center">
+		 <br><br>
+		 <video controls Id="video1" width="100%" >
+		 <source src="{% static 'comet-vid.mp4' %}" type="video/mp4">
+		 <!-- sample with urL <source src="//vjs.zencdn.net/v/oceans.mp4" type="video/mp4"> -->
+		 Your browser does not support HTML5 video. Use Chrome.
+		 </video>
+		 <br>
+		 <button class="btn" onclick="restart();">Restart</button>
+		 <button class="btn" onclick="skip(-10);">REW 10s</button>
+		 <button class="btn" onclick="skip(-1);">REW 1s</button>
+		 <button class="btn" onclick="playPause();">Play/Pause</button>
+		 <button class="btn" onclick="skip(1);">FFW 1s</button>
+		 <button class="btn" onclick="skip(10);">FFW 10s</button>
+		 <button class="btn" onclick="skip(-1/30);">REW 1/30s</button>
+		 <button class="btn" onclick="skip(1/30);">FFW 1/30s</button>
+		 <br>
+		<p>1/30 sec represents a 'frame'.</p>  
+	</div>
+	</div>
 
-<div class="col-sm-2">
-    <strong>USA-12</strong><br>
-    <strong>Date:</strong> <strong class="green">2022-4-28</strong><br>
-    <strong>Time:</strong> <strong class="green">18:12:22 UTC</strong><br>
-    <strong>Accuracy:</strong> <strong class="green">{{ num_books }} %</strong>
-    <br><br>
-    <strong>Station T:</strong> <strong class="green">29.4 &#730; C</strong><br>
-    <strong>Ambient T:</strong> <strong class="green">28.7 &#730; C</strong><br>
-    <strong>Station H:</strong> <strong class="green">55.3 %</strong><br>
-</div>
-<div class="col-sm-4">
-    <h3>Toggle between ISS, Wit-motion, Flight, Weather, Satellites, Constellations</h3>
-    <h3>ISS - Location - Real Time</h3>
-        <p>
-        ISS Location<br />
-        latitude: <span id="lat"></span>°<br />
-        longitude: <span id="lon"></span>°
-        </p>
+	<div class="col-sm-2">
+		<strong>USA-12</strong><br>
+		<strong>Date:</strong> <strong class="green">2022-4-28</strong><br>
+		<strong>Time:</strong> <strong class="green">18:12:22 UTC</strong><br>
+		<strong>Accuracy:</strong> <strong class="green">{{ num_books }} %</strong>
+		<br><br>
+		<strong>Station T:</strong> <strong class="green">29.4 &#730; C</strong><br>
+		<strong>Ambient T:</strong> <strong class="green">28.7 &#730; C</strong><br>
+		<strong>Station H:</strong> <strong class="green">55.3 %</strong><br>
+	</div>
+	<div class="col-sm-4">
+		<h3>Toggle between ISS, Wit-motion, Flight, Weather, Satellites, Constellations</h3>
+		<h3>ISS - Location - Real Time</h3>
+			<p>
+			ISS Location<br />
+			latitude: <span id="lat"></span>°<br />
+			longitude: <span id="lon"></span>°
+			</p>
 
-<div id="map2" style="width: 400px; height: 280px;"></div>
-<br><br>
+		<div id="map2" style="width: 400px; height: 280px;"></div>
+		<br><br>
 
 
-<div style="text-align:center">
-    <!-- relable buttons/video and corresponding js code to prevent conflict with other video -->
-    <br><br>
-        <h3>PTZ View</h3>
-        <video controls Id="videoptz" width="100%">
-        <source src="{% static 'comet-vid.mp4' %}" type="video/mp4">
-        Your browser does not support HTML5 video. Use Chrome.
-        </video><br>
-        <button class="btn" onclick="restartPtz();">Restart</button>
-        <button class="btn" onclick="skipPtz(-10);">REW 10s</button>
-        <button class="btn" onclick="skipPtz(-1);">REW 1s</button>
-        <button class="btn" onclick="playPausePtz();">Play/Pause</button>
-        <button class="btn" onclick="skipPtz(1);">FFW 1s</button>
-        <button class="btn" onclick="skipPtz(10);">FFW 10s</button>
-        <button class="btn" onclick="skipPtz(-1/30);">REW 1/30s</button>
-        <button class="btn" onclick="skipPtz(1/30);">FFW 1/30s</button>
-    <br>
-    <p>1/30 sec represents a 'frame'.</p>
-</div>
-</div>
-</div>
-
-<div class="row">
-<div class="col-sm-3"></div>
-<div class="col-sm-6"><br><br><br>
-    <h3>Witmotion Data - Simulated</h3>
-    <br>
-    4 graphs<br>One single json file with TIME, acc, rotational speed 1-2-3, mag field, roll, pitch, yaw.
-    <br>
-    1: Acceleration m/s^2 <br>
-    2: Rotational Speed (3 readings) deg/s<br>
-    3: Magnetic Field - 1 reading<br>
-    4: Roll, Pitch, Yaw in deg
-    </h3>
-    <br><br><br>
-    <figure class="highcharts-figure">
-        <div id="container-wm-acceleration"></div>
-            <p class="highcharts-description">
-            Datasets formatted in CSV or JSON can be fetched remotely using the
-            <code>data</code> module. This chart shows how a chart can also be
-            configured to poll against the remote source.
-            </p>
-            
-        <div id="container-wm-magnetic-field"></div>
-    </figure>
-
-<div class="ld-row">
-    <input type="hidden" checked="checked" id="enablePolling"/>
-    <input type="hidden" checked="checked" id="enablePollingMF"/>
-</div>
-<div class="ld-row">
-    <input class="ld-time-input" type="hidden" value="2" id="pollingTime"/>
-    <input class="ld-time-input" type="hidden" value="2" id="pollingTimeMF"/>
-</div>
-<div class="ld-row">
-    <input class="ld-url-input" type="hidden" id="fetchURL"/>
-    <input class="ld-url-input" type="hidden" id="fetchURLMF"/>
-</div>
-<br><br><br>
-</div>
-<div class="col-sm-3"></div>
+		<div style="text-align:center">
+			<!-- relable buttons/video and corresponding js code to prevent conflict with other video -->
+			<br><br>
+				<h3>PTZ View</h3>
+				<video controls Id="videoptz" width="100%">
+				<source src="{% static 'comet-vid.mp4' %}" type="video/mp4">
+				Your browser does not support HTML5 video. Use Chrome.
+				</video><br>
+				<button class="btn" onclick="restartPtz();">Restart</button>
+				<button class="btn" onclick="skipPtz(-10);">REW 10s</button>
+				<button class="btn" onclick="skipPtz(-1);">REW 1s</button>
+				<button class="btn" onclick="playPausePtz();">Play/Pause</button>
+				<button class="btn" onclick="skipPtz(1);">FFW 1s</button>
+				<button class="btn" onclick="skipPtz(10);">FFW 10s</button>
+				<button class="btn" onclick="skipPtz(-1/30);">REW 1/30s</button>
+				<button class="btn" onclick="skipPtz(1/30);">FFW 1/30s</button>
+			<br>
+			<p>1/30 sec represents a 'frame'.</p>
+		</div>
+	</div>
 </div>
 
 <div class="row">
-<div class="col-sm-3"></div>
-<div class="col-sm-6">
-<h3>Database Content - Sample Placeholder</h3>
-<p>Here are the following record counts:</p>
-<ul>
-<li><strong>Example Placeholder - Books:</strong> {{ num_books }}</li>
-<li><strong>Example Placeholder - Copies:</strong> {{ num_instances }}</li>
-<li><strong>Example Placeholder - Copies available:</strong> {{ num_instances_available }}</li>
-<li><strong>Example Placeholder - Authors:</strong> {{ num_authors }}</li>
-</ul>
-</div>
-<div class="col-sm-3"></div>
+	<div class="col-sm-3"></div>
+	<div class="col-sm-6"><br><br><br>
+		<h3>Witmotion Data - Simulated</h3>
+			<br>
+			4 graphs<br>One single json file with TIME, acc, rotational speed 1-2-3, mag field, roll, pitch, yaw.
+			<br>
+			1: Acceleration m/s^2 <br>
+			2: Rotational Speed (3 readings) deg/s<br>
+			3: Magnetic Field - 1 reading<br>
+			4: Roll, Pitch, Yaw in deg
+		</h3>
+		<br><br><br>
+		<figure class="highcharts-figure">
+			<div id="container-wm-acceleration"></div>
+				<p class="highcharts-description">
+				Datasets formatted in CSV or JSON can be fetched remotely using the
+				<code>data</code> module. This chart shows how a chart can also be
+				configured to poll against the remote source.
+				</p>
+				
+			<div id="container-wm-magnetic-field"></div>
+		</figure>
+
+		<div class="ld-row">
+			<input type="hidden" checked="checked" id="enablePolling"/>
+			<input type="hidden" checked="checked" id="enablePollingMF"/>
+		</div>
+		<div class="ld-row">
+			<input class="ld-time-input" type="hidden" value="2" id="pollingTime"/>
+			<input class="ld-time-input" type="hidden" value="2" id="pollingTimeMF"/>
+		</div>
+		<div class="ld-row">
+			<input class="ld-url-input" type="hidden" id="fetchURL"/>
+			<input class="ld-url-input" type="hidden" id="fetchURLMF"/>
+		</div>
+	<br><br><br>
+	</div>
+	<div class="col-sm-3"></div>
 </div>
 
 <div class="row">
-<div class="col-sm-3"></div>
-<div class="col-sm-7">
-<h3>Preliminary Weather Map</h3>
-<div>
-Temperature: <span id="temp"></span>&nbsp °C,
-Humidity: <span id="humid"></span>%,
-Wind: <span id="winds"></span>&nbsp m/s,
-Precipitation: <span id="rain"></span> mm,
-Pressure: <span id="pressure"></span>&nbsp hPa, <br>
-Sunrise: <span id="sunrise"></span>, <br>
-Sunset: <span id="sunset"></span>
+	<div class="col-sm-3"></div>
+	<div class="col-sm-6">
+	<h3>Database Content - Sample Placeholder</h3>
+		<p>Here are the following record counts:</p>
+		<ul>
+		<li><strong>Example Placeholder - Books:</strong> {{ num_books }}</li>
+		<li><strong>Example Placeholder - Copies:</strong> {{ num_instances }}</li>
+		<li><strong>Example Placeholder - Copies available:</strong> {{ num_instances_available }}</li>
+		<li><strong>Example Placeholder - Authors:</strong> {{ num_authors }}</li>
+		</ul>
+	</div>
+	<div class="col-sm-3"></div>
 </div>
 
-<div id="map" style="width: 600px; height: 400px;"></div>
-<br><br>
-</div>
-<div class="col-sm-2"></div>
+<div class="row">
+	<div class="col-sm-3"></div>
+	<div class="col-sm-7">
+		<h3>Preliminary Weather Map</h3>
+		<div>
+		Temperature: <span id="temp"></span>&nbsp °C,
+		Humidity: <span id="humid"></span>%,
+		Wind: <span id="winds"></span>&nbsp m/s,
+		Precipitation: <span id="rain"></span> mm,
+		Pressure: <span id="pressure"></span>&nbsp hPa, <br>
+		Sunrise: <span id="sunrise"></span>, <br>
+		Sunset: <span id="sunset"></span>
+		</div>
+
+	<div id="map" style="width: 600px; height: 400px;"></div>
+	<br><br>
+	</div>
+	<div class="col-sm-2"></div>
 </div>
 
 
 <div class="row">
-<div class="col-sm-3"></div>
-<div class="col-sm-6">
-<h3>Flight Aware and Satellites / GPS - Location - Real Time</h3>
-<div id="map3" style="width: 600px; height: 400px;"></div>
-<br><br>
-  </div>
-<div class="col-sm-3"></div>
+	<div class="col-sm-3"></div>
+	<div class="col-sm-6">
+		<h3>Flight Aware and Satellites / GPS - Location - Real Time</h3>
+		<div id="map3" style="width: 600px; height: 400px;"></div>
+		<br><br>
+	</div>
+	<div class="col-sm-3"></div>
 </div>  
 
 </div>
@@ -165,37 +165,38 @@ Sunset: <span id="sunset"></span>
     // api_urlw update to users location and key(?)
     const api_urlw = 'https://api.openweathermap.org/data/2.5/weather?lat=26.111944&lon=-97.169724&appid=1d705b6f8471dfb1d07e10c9725aba3e';
 
-async function getWeather() {
-const responsew = await fetch(api_urlw);
-//console.log(response);
-const dataw = await responsew.json();
-console.log(dataw);
-console.log(dataw["weather"][0]["id"]);
-console.log(dataw["weather"][0]["main"]);
-console.log(dataw["main"]["temp"]);
-console.log(dataw["main"]["humidity"]);
-console.log(dataw["main"]["pressure"]);
-var sunriseDate = new Date(dataw["sys"]["sunrise"]*1000);
-var sunsetDate = new Date(dataw["sys"]["sunset"]*1000);
+	async function getWeather() {
+		const responsew = await fetch(api_urlw);
+		//console.log(response);
+		const dataw = await responsew.json();
+		//console.log(dataw);
+		//console.log(dataw["weather"][0]["id"]);
+		//console.log(dataw["weather"][0]["main"]);
+		//console.log(dataw["main"]["temp"]);
+		//console.log(dataw["main"]["humidity"]);
+		//console.log(dataw["main"]["pressure"]);
+		
+		var sunriseDate = new Date(dataw["sys"]["sunrise"]*1000);
+		var sunsetDate = new Date(dataw["sys"]["sunset"]*1000);
 
-//document.getElementById('temp').textContent = dataw["weather"][0]["id"];
-document.getElementById('temp').textContent = Math.round(dataw["main"]["temp"]-273.15);
-document.getElementById('humid').textContent = dataw["main"]["humidity"];
-document.getElementById('pressure').textContent = dataw["main"]["pressure"];
-document.getElementById('winds').textContent = dataw["wind"]["speed"];
-document.getElementById('sunrise').textContent = sunriseDate;
-document.getElementById('sunset').textContent = sunsetDate;
-try {
-document.getElementById('rain').textContent = dataw["rain"]["1h"];
-} catch {
-document.getElementById('rain').textContent = 0;
-};
-}
+		//document.getElementById('temp').textContent = dataw["weather"][0]["id"];
+		document.getElementById('temp').textContent = Math.round(dataw["main"]["temp"]-273.15);
+		document.getElementById('humid').textContent = dataw["main"]["humidity"];
+		document.getElementById('pressure').textContent = dataw["main"]["pressure"];
+		document.getElementById('winds').textContent = dataw["wind"]["speed"];
+		document.getElementById('sunrise').textContent = sunriseDate;
+		document.getElementById('sunset').textContent = sunsetDate;
+		try {
+			document.getElementById('rain').textContent = dataw["rain"]["1h"];
+		} catch {
+			document.getElementById('rain').textContent = 0;
+		};
+	}
 
     getWeather();
     //gets data from: https://api.openweathermap.org/data/2.5/weather?lat=26.111944&lon=-97.169724&appid=1d705b6f8471dfb1d07e10c9725aba3e
 
-    //needs work. create function to set timer to one hour, use chron jobs not js.
+    //needs work. create function to set timer to one hour, (five minutes following the top of the hour) use chron jobs not js.
     //setInterval(getWeather, 1000);
    
    
@@ -224,13 +225,13 @@ document.getElementById('rain').textContent = 0;
         const data = await response.json();
         const { latitude, longitude } = data;
 
-    marker.setLatLng([latitude, longitude]);
-        if (firstTime) {
-          map2.setView([latitude, longitude], 1);
-          firstTime = false;
-        }
-    document.getElementById('lat').textContent = latitude.toFixed(2);
-    document.getElementById('lon').textContent = longitude.toFixed(2);
+		marker.setLatLng([latitude, longitude]);
+			if (firstTime) {
+			  map2.setView([latitude, longitude], 1);
+			  firstTime = false;
+			}
+		document.getElementById('lat').textContent = latitude.toFixed(2);
+		document.getElementById('lon').textContent = longitude.toFixed(2);
     }
 
     getISS();
@@ -250,8 +251,8 @@ document.getElementById('rain').textContent = 0;
 
     // add a marker in the given location, attach some popup content to it and open the popup
     L.marker([26.111944, -97.169724]).addTo(map3)
-    .bindPopup('Your Station.')
-    .openPopup();
+	.bindPopup('Your Station.')
+	.openPopup();
 
     //map 1 with language controls.
     //lat long is hard coded in the original API code. Fix so it updates with gps.
@@ -285,6 +286,8 @@ function restart() {
     myVideo.play();
     }
 
+
+//
 var myVideoPtz = document.getElementById("videoptz");
 
 function playPausePtz() {
@@ -309,6 +312,22 @@ function restartPtz() {
 
 </script>
 
+<script>
+//wip
+/*
+let camera = [
+	['video1',  btnid]
+	['videoPtz', btnid]
+]
+var btnPtz = document.getElementById("");
+
+var btnPtzEventHandler=function(event,param1,param2){
+	console.log(event,param1,param2);
+}
+
+document.getElementById("someid").addEventListener('click',btnPtzHandler.bind(event,'param1','param2'), false);
+*/
+</script>
 
 <script>
 var defaultData = 'https://demo-live-data.highcharts.com/time-data.csv';
