@@ -63,7 +63,7 @@ Store map tiles for weather app in db, create db, create connection. create corr
 
 
 TODOS 5-16-22:
--Time to lint js files!
+-Time to lint js files! Python linting (spaces instead of tabs)
 
 -Continue CSS/bootstrap work. Need image files for icons. What's the font-style we're using?
 
@@ -97,3 +97,5 @@ https://github.com/neo4j-contrib/django-neomodel.
 -Add Dockerbuild: to include the above and pylint, pytest, eslint, mocha/chai. No need for webpack/babel since we're using evergreen browser.
 
 -If you go this far, just for kicks: http://www.catb.org/~esr/faqs/hacker-howto.html
+
+----

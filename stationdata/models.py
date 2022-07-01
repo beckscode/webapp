@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse  # To generate URLS by reversing URL patterns
 
 
 # Database information for GUI, add PostGIS extension
@@ -39,13 +40,7 @@ class MyModelName(models.Model):
 
 '''
 
-
-
-
 #The following is for practice, not part of sky360
-
-
-from django.urls import reverse  # To generate URLS by reversing URL patterns
 
 
 class Genre(models.Model):
@@ -60,6 +55,7 @@ class Genre(models.Model):
         return self.name
 
 
+
 class Language(models.Model):
     """Model representing a Language (e.g. English, French, Japanese, etc.)"""
     name = models.CharField(max_length=200,
@@ -68,6 +64,7 @@ class Language(models.Model):
     def __str__(self):
         """String for representing the Model object (in Admin site etc.)"""
         return self.name
+
 
 
 class Book(models.Model):
@@ -110,6 +107,7 @@ from datetime import date
 from django.contrib.auth.models import User  # Required to assign User as a borrower
 
 
+
 class BookInstance(models.Model):
     """Model representing a specific copy of a book (i.e. that can be borrowed from the library)."""
     id = models.UUIDField(primary_key=True, default=uuid.uuid4,
@@ -148,12 +146,13 @@ class BookInstance(models.Model):
         return '{0} ({1})'.format(self.id, self.book.title)
 
 
+
 class Author(models.Model):
     """Model representing an author."""
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     date_of_birth = models.DateField(null=True, blank=True)
-    date_of_death = models.DateField('died', null=True, blank=True)
+    date_of_death = models.DateField(null=True, blank=True)
 
     class Meta:
         ordering = ['last_name', 'first_name']
@@ -165,3 +164,72 @@ class Author(models.Model):
     def __str__(self):
         """String for representing the Model object."""
         return '{0}, {1}'.format(self.last_name, self.first_name)
+
+
+#  Code for Sky360
+class Station(models.Model):
+    """Model representing an author."""
+    station_id = models.CharField(max_length=100)
+    """Get Station Id from??"""
+    mac_id = models.CharField(max_length=12)
+    """Get MAC ID from??"""
+    email = models.CharField(max_length=100)
+    """Get email from User"""
+    latitude = models.CharField(max_length=10)
+    """Get latitude from gps"""
+    longitude = models.CharField(max_length=10)	
+    """Get longitude from gps"""
+
+    class Meta:
+        ordering = ['station_id']
+		
+    def get_absolute_url(self):
+        """Returns the url to access a particular book instance."""
+        return reverse('station-detail', args=[str(self.id)])		
+
+    def __str__(self):
+        """String for representing the Model object."""
+        return self.station_id
+
+		
+		
+class API_Key(models.Model):
+    ISS_API_KEY = models.CharField(max_length=100)
+    SAT_API_KEY = models.CharField(max_length=100)
+    #WEATHER_API_KEY = models.CharField(max_length=100)
+	
+    class Meta:
+        ordering = ['ISS_API_KEY']
+		
+    def get_absolute_url(self):
+        """Returns the url to access a particular book instance."""
+        return reverse('station-detail', args=[str(self.id)])		
+
+    def __str__(self):
+        """String for representing the Model object."""
+        return '{0} ({1})'.format(self.ISS_API_KEY, self.SAT_API_KEY, self.WEATHER_API_KEY)
+		
+
+		
+class GUI_Style(models.Model):
+    """Model representing a specific copy of a book (i.e. that can be borrowed from the library)."""
+	
+    GUI_CHOICE = (
+        ('d', 'Standard'),
+        ('s', 'Second Style'),
+        ('t', 'Third Style'),
+        ('f', 'Fourth Style'),
+    )
+
+    selectedstyle = models.CharField(
+        max_length=1,
+        choices=GUI_CHOICE,
+        blank=True,
+        default='d',
+        help_text='Gui Style')
+
+    """Error produced on save. Why?"""
+
+    def __str__(self):
+        """String for representing the Model object."""
+        return '{0} ({1})'.format(self.selectedstyle)
