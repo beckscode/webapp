@@ -165,6 +165,8 @@
 
 <script>
     // api_urlw update to users location (remove hardcoded coords) and key(?)
+    // use coords from browser as default, 
+    // if gps installed then add coords from there (it will be on Sky360 station.
     const api_urlw = 'https://api.openweathermap.org/data/2.5/weather?lat=26.111944&lon=-97.169724&appid=1d705b6f8471dfb1d07e10c9725aba3e';
 
 	async function getWeather() {
@@ -243,7 +245,7 @@
     //document.getElementById('lon').textContent = longitude.toFixed(2);
 
 
-    //Flight Aware
+    //Flight Aware, set coords with browswer as default and when avail, use gps from Sky360 station
     var map3 = L.map('map3').setView([26.111944, -97.169724], 12);
 
     // add an OpenStreetMap tile layer
@@ -252,6 +254,7 @@
     }).addTo(map3);
 
     // add a marker in the given location, attach some popup content to it and open the popup
+    // set coords with browswer as default and when avail, use gps from Sky360 station
     L.marker([26.111944, -97.169724]).addTo(map3)
 	.bindPopup('Your Station.')
 	.openPopup();
@@ -267,6 +270,7 @@
 
 <script>
 // Video Controls
+// Will need to rewrite fxn so its applicable to multiple cameras
 var myVideo = document.getElementById("video1");
 
 function playPause() {
@@ -290,6 +294,7 @@ function restart() {
 
 
 //PTZ Controls
+//Will need to rewrite fxn so its applicable to multiple PTZs?
 var myVideoPtz = document.getElementById("videoptz");
 
 function playPausePtz() {
@@ -316,6 +321,7 @@ function restartPtz() {
 
 
 <script>
+//Current date UTC
 const y = new Date();
 let year = y.getUTCFullYear();
 const d = new Date();
@@ -325,6 +331,7 @@ let month = m.getUTCMonth();
 
 document.getElementById("date-utc").innerHTML = year + "-" + month + "-" + day + " UTC";
 
+//Current time UTC
 const h = new Date();
 let hour = h.getUTCHours();
 const minute = new Date();
@@ -337,6 +344,7 @@ document.getElementById("time-utc").innerHTML = hour + ":" + minutes + ":" + sec
 
 
 <script>
+// get location. set coords with browswer as default and when avail, use gps from Sky360 station
 getLocation();
 
 var browser_geolocation = document.getElementById("geolocation_browser");
@@ -390,9 +398,9 @@ urlInput.value = defaultData;
 // and such is completely gone.
 // pollingCheckbox.onchange = urlInput.onchange = pollingInput.onchange = createChart;
 
-// Create the chart
 createChart();
 
+// change link below to data resource
 var defaultDataMF = 'https://demo-live-data.highcharts.com/time-data.csv';
 var urlInputMF = document.getElementById('fetchURLMF');
 var pollingCheckboxMF = document.getElementById('enablePollingMF');
@@ -424,7 +432,7 @@ urlInputMF.value = defaultDataMF;
 // and such is completely gone.
 // pollingCheckbox.onchange = urlInput.onchange = pollingInput.onchange = createChart;
 
-// Create the chart
+
 createChartMagneticField();
 
 </script>

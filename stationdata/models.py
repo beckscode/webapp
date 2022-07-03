@@ -166,19 +166,25 @@ class Author(models.Model):
         return '{0}, {1}'.format(self.last_name, self.first_name)
 
 
-#  Code for Sky360
+###################################
+###################################
+#######  Code for Sky360  #########
+###################################
+###################################
+
+
 class Station(models.Model):
     """Model representing an author."""
     station_id = models.CharField(max_length=100)
-    """Get Station Id from??"""
+    """Get Station Id from sky360 station??"""
     mac_id = models.CharField(max_length=12)
-    """Get MAC ID from??"""
+    """Get MAC ID from sky360 station??"""
     email = models.CharField(max_length=100)
     """Get email from User"""
     latitude = models.CharField(max_length=10)
-    """Get latitude from gps"""
+    """Get latitude from gps on  sky360 station. use lat/long from browser as default unless gps reading is available."""
     longitude = models.CharField(max_length=10)	
-    """Get longitude from gps"""
+    """Get longitude from gps on  sky360 station. use lat/long from browser as default unless gps reading is available."""
 
     class Meta:
         ordering = ['station_id']
@@ -207,12 +213,12 @@ class API_Key(models.Model):
 
     def __str__(self):
         """String for representing the Model object."""
-        return '{0} ({1})'.format(self.ISS_API_KEY, self.SAT_API_KEY, self.WEATHER_API_KEY)
+        return '{0} ({1})'.format(self.ISS_API_KEY, self.SAT_API_KEY)
 		
 
 		
 class GUI_Style(models.Model):
-    """Model representing a specific copy of a book (i.e. that can be borrowed from the library)."""
+    """Select style for GUI"""
 	
     GUI_CHOICE = (
         ('d', 'Standard'),
